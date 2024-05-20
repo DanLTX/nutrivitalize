@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Stoke:wght@300&display=swap');
+
+.filter{
+    background-color: rgb(205, 214, 198);
+    color: black;
+    width: 300px;
+    height: 800px;
+    box-shadow: 5px 10px 15px 5px black;
+    border-radius: 25px;
+    margin-top: 120px;
+    margin-left: 30px;
+    padding: 40px;
+    font-size: 12px;
+    position: absolute;
+}
+
+.food-container{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: white;
+    padding: 10px;
+    margin-left: 500px;
+    margin-top: 70px;
+    margin-right: 200px;
+    gap: 100px;
+}
+
+.food-grid{
+    display: flex;
+    background-color: rgba(121, 114, 114, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+    display: block;
+}
+
+.title{
+    margin-left: 350px;
+    margin-top: 30px;
+}
+
+#searchfood{
+    margin-left: 500px;
+    margin-top: 50px;
+    width: 200px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url(	https://www.w3schools.com/css/searchicon.png);
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    transition: width 0.4s ease-in-out;
+}
+#searchfood:focus{
+    width: 920px;
+}
+
+.food-grid img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
+}
+
+.food-grid h5{
+    font-size: 20px;
+}
+
+.food-grid h6{
+    font-size: 18px;
+}
