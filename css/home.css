@@ -8,7 +8,42 @@
 }
 
 body{
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* fallback color */
+    transition: opacity 0.5s ease-in-out;
     width: 100%;
+    
+}
+
+#bground{
+    background-image: url(https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-3foodgroups_fruits_detailfeature.jpg?sfvrsn=64942d53_4);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.fade-out{
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#bground h1{
+    color: white;
+    font-size: 5em;
+    text-shadow: 2px 2px 0px black, 
+                 -2px -2px 0px black, 
+                 -2px 2px 0px black, 
+                 2px -2px 0px black, 
+                 2px 0px 0px black, 
+                 -2px 0px 0px black, 
+                 0px 2px 0px black, 
+                 0px -2px 0px black;
 }
 
 /* Header */
