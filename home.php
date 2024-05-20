@@ -26,6 +26,9 @@
         </div>
         
     </section>
-    <h1>HOME PAGE</h1>
+    <section id="bground">
+        <h1>Welcome</h1>
+    </section>
+    
 </body>
 </html>
