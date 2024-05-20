@@ -50,6 +50,18 @@ else if(isset($_POST['submitLog'])){
             background-size: 100% 100%;
             height: 100vh;
             background-position: center top 70px;
+
+        .radio-inputs {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            border-radius: 0.5rem;
+            background-color: #EEE;
+            box-sizing: border-box;
+            box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
+            padding: 0.25rem;
+            width: 300px;
+            font-size: 14px;
         }
     </style>
 </head>
@@ -126,9 +138,17 @@ else if(isset($_POST['submitLog'])){
                             <i class="bi bi-lock"></i>
                             <input type="text" placeholder="Enter your age" name="age" required>
                         </div>
-                        <div class="input">
-                            <i class="bi bi-lock"></i>
-                            <input type="text" placeholder="Enter your gender" name="gender" required>
+                        </div>
+                        <div class="mydict">
+	                    <div class="radio-inputs">
+                            <label class="radio">
+                                <input type="radio" name="gender" checked="">
+                                <span class="name">Male</span>
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="gender">
+                                <span class="name">Female</span>
+                             </label>
                         </div>
                         <div class="input">
                             <i class="bi bi-lock"></i>
