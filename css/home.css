@@ -8,42 +8,7 @@
 }
 
 body{
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4; /* fallback color */
-    transition: opacity 0.5s ease-in-out;
     width: 100%;
-    
-}
-
-#bground{
-    background-image: url(https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-3foodgroups_fruits_detailfeature.jpg?sfvrsn=64942d53_4);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 50vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.fade-out{
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-}
-
-#bground h1{
-    color: white;
-    font-size: 5em;
-    text-shadow: 2px 2px 0px black, 
-                 -2px -2px 0px black, 
-                 -2px 2px 0px black, 
-                 2px -2px 0px black, 
-                 2px 0px 0px black, 
-                 -2px 0px 0px black, 
-                 0px 2px 0px black, 
-                 0px -2px 0px black;
 }
 
 /* Header */
@@ -66,7 +31,6 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    
 }
 
 #navbar li{
@@ -82,6 +46,7 @@ body{
     color: #000000;   
     transition:  0.3s ease;
 }
+
 
 #navbar li a:hover{
     
@@ -116,11 +81,10 @@ button {
     font-weight: 600;
     border-radius: 12px;
     cursor: pointer;
+    background-color: transparent;
     
 }
-button:hover{
-    background-color: rgb(182, 248, 245);
-}
+
 
 #header button i{
     color: #14ba01;
@@ -312,4 +276,40 @@ button:hover{
     #ham.active{
         visibility: hidden;
     }
+}
+
+.welcome-container{
+    position: relative;
+  text-align: center;
+  color: white;
+}
+
+.welcometext{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+}
+
+.calorie-container{
+    position: relative;
+  text-align: center;
+  color: white;
+}
+
+.calorie-text{
+    position: absolute;
+    top: 50%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+}
+
+.arrow{
+    color: whitesmoke;
+    font-size: 100px;
+    position: absolute;
+    right: 80px;
+    top: 40%;
 }

@@ -32,7 +32,6 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    
 }
 
 #navbar li{
@@ -214,6 +213,10 @@ form .input i{
     color: #03c7c0;
 }
 
+input[type='radio'] {
+    accent-color: #2a948d;
+}
+
 form .content .text a{
     text-decoration: none;
     color: blue;
@@ -347,9 +350,7 @@ form .content .text a:hover{
     text-align: center;
     color: rgb(255, 255, 255);
     position: relative;
-    bottom: 480px;
-    right: -400px;
-
+    bottom: 20px;
     position: relative;
     max-width: 340px;
     width: 100%;
@@ -380,5 +381,21 @@ form .content .text a:hover{
 		transform: scale(0.95);
 		box-shadow: 0 0 0 0 rgba(255, 6, 6, 0.863);
 	}
+}
+
+.radio-inputs {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            border-radius: 0.5rem;
+            background-color: #ffffff;
+            box-sizing: border-box;
+            padding: 0.25rem;
+            width: 300px;
+            font-size: 14px;
+}
+
+.gender-input{
+    padding-left: 50px;
 }
     

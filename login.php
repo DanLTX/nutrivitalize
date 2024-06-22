@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'conn.php';
 if(isset($_POST['submitSign'])){
     $sql="insert into user (email,username,pass_word,age,gender,height,weight) values
@@ -17,21 +18,21 @@ else if(isset($_POST['submitLog'])){
     if($count == 1){  
         
         header("Location: home.php");
-        /**if (headers_sent()) {
-            die("Redirect failed. Please click on this link: <a href=http://localhost/nutrivitalize/home.php>");
-        }
-        else{
-            exit(header("Location: home.php"));
-        } **/
-        //echo "<script type='text/javascript'>window.top.location='http://localhost/nutrivitalize/home.php';</script>";
     }  
     else{  
-        /* echo "<h1> Login failed. Invalid email or password.</h1>" */
-        
-        
+        $sqlLog2 = "select * from admin where emailID = '$email' and pass_word = '$password'";  
+        $result = mysqli_query($conn, $sqlLog2);  
+        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
+        $count = mysqli_num_rows($result);
+        if($count == 1){
+            header("Location: adminhome.php");
+        }  
     }
+    $_SESSION["email"] = $email;
 }
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,18 +51,6 @@ else if(isset($_POST['submitLog'])){
             background-size: 100% 100%;
             height: 100vh;
             background-position: center top 70px;
-
-        .radio-inputs {
-            position: relative;
-            display: flex;
-            flex-wrap: wrap;
-            border-radius: 0.5rem;
-            background-color: #EEE;
-            box-sizing: border-box;
-            box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
-            padding: 0.25rem;
-            width: 300px;
-            font-size: 14px;
         }
     </style>
 </head>
@@ -72,10 +61,6 @@ else if(isset($_POST['submitLog'])){
         <a href="#"><img id="logo" src="newlogo2.png" alt="" class="logo" width="90" height=auto></a>
         <div>
             <ul id="navbar"> 
-                <li><a href="home.php">Home</a></li>
-                <li><a href="calorie_cal.php">Calorie Calculator</a></li>
-                <li><a href="food.php">Food Calorie</a></li>
-                <li><a href="bmi.php">BMI Tracker</a></li>
                 <li><button onclick="window.location='login.php'"><i class="bi bi-door-open-fill"></i>New user / Log in</button></li>
                 <a href="#" id="close"><i class="bi bi-x-circle"></i></a>
             </ul>
@@ -88,6 +73,8 @@ else if(isset($_POST['submitLog'])){
 
     <section class="signin-signup">
         <div class="container">
+            
+            
             <input type="checkbox" name="" id="change">
             <!-- if checkbox is is checked than go to register/sign up form -->
             <div class="cover"></div>
@@ -95,6 +82,18 @@ else if(isset($_POST['submitLog'])){
             <form action="#" method="post">
 
                 <div class="signin-form">
+                    <?php
+                    if(isset($_POST['submitLog'])){
+                        if(!$count == 1){
+                            echo "<p class='error'><b>INCORRECT EMAIL OR PASSWORD!!!</b></p>";
+                            
+                        }
+                    }
+                    if(isset($_POST['submitSign'])){
+                        echo "<script>window.alert('Congratulations, your account has successsfully created!')</script>";
+                    }
+                    
+                    ?>
                     <label class="title" for="signin">Log in</label>
                     <div class="content">
                         <div class="input">
@@ -138,18 +137,21 @@ else if(isset($_POST['submitLog'])){
                             <i class="bi bi-lock"></i>
                             <input type="text" placeholder="Enter your age" name="age" required>
                         </div>
-                        </div>
-                        <div class="mydict">
+
+                        
 	                    <div class="radio-inputs">
-                            <label class="radio">
-                                <input type="radio" name="gender" checked="">
-                                <span class="name">Male</span>
-                            </label>
-                            <label class="radio">
-                                <input type="radio" name="gender">
-                                <span class="name">Female</span>
-                             </label>
+                            <div>
+                                <input type="radio" id="Male" name="gender" value="Male" required style="color: #03c7c0">
+                                <label for="Male" style="text-decoration: none; color:dimgray">Male</label>
+                                <i class="bi bi-gender-male" style="color: #03c7c0"></i>
+                            </div>
+                            <div class="gender-input">
+                                <input type="radio" id="Female" name="gender" value="Female" required>
+                                <label for="Female" style="text-decoration: none; color:dimgray">Female</label>
+                                <i class="bi bi-gender-female" style="color: #03c7c0"></i>
+                            </div>
                         </div>
+
                         <div class="input">
                             <i class="bi bi-lock"></i>
                             <input type="text" placeholder="Enter your height (cm)" name="height" required>
@@ -192,11 +194,8 @@ else if(isset($_POST['submitLog'])){
 </html>
 
 <?php
-if(isset($_POST['submitLog'])){
-    if(!$count == 1){
-        echo "<p class='error'><b>INCORRECT EMAIL OR PASSWORD!!!</b></p>";
-    }
-}
+
+
 
 
 ?>

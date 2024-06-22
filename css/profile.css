@@ -1,0 +1,11 @@
+.acc-container{
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(185, 174, 174);
+    padding: 50px;
+}
+
+.details{
+    padding: 100px;
+}

@@ -1,0 +1,42 @@
+.updatebar{
+    background-image: linear-gradient(to right, lightgreen, cyan);
+    color: whitesmoke;
+    padding: 20px;
+    -webkit-box-shadow: 0 14px 6px -6px #222;
+    -moz-box-shadow: 0 14px 6px -6px #222;
+    box-shadow: 0 14px 50px -6px #222;
+    position: relative;
+}
+
+.calorie{
+    text-align: center;
+    font-size: 150px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    color: white;
+    text-shadow: -1px 5px 15px lightgreen,
+                1px 5px 15px lightgreen,
+                1px -5px 15px lightgreen,
+                -1px -5px 15px lightgreen;
+}
+.details{
+    background-image: linear-gradient(to right, lightgreen, cyan);
+    color: whitesmoke;
+    padding: 20px;
+    -webkit-box-shadow: 0 14px 6px -6px #222;
+  -moz-box-shadow: 0 14px 6px -6px #222;
+  box-shadow: 0 14px 50px -6px #222;
+}
+
+.arrow{
+    text-align: end;
+    color: whitesmoke;
+    font-size: 100px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+
+.arrowbtn{
+    text-align: end;
+}
