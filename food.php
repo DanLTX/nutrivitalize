@@ -1,3 +1,12 @@
+<?php
+session_start();
+include 'conn.php';
+
+$sql = "SELECT * FROM food";
+$result = $conn->query($sql);
+$conn->close();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,8 +26,9 @@
                 <li><a href="calorie_cal.php">Calorie Calculator</a></li>
                 <li><a href="food.php">Food Calorie</a></li>
                 <li><a href="bmi.php">BMI Tracker</a></li>
-                <li><button onclick="window.location='login.php'"><i class="bi bi-door-open-fill"></i>New user / Log in</button></li>
-                <a href="#" id="close"><i class="bi bi-x-circle"></i></a>
+                <?php
+                echo "<li><a href=\"profile.php\"><i class='bi bi-person-fill'></i>$_SESSION[username]</a></li>";
+                ?>
             </ul>
         </div>
         <div id="small">
@@ -36,49 +46,18 @@
         <input type="text" name="searchfood" id="searchfood" placeholder="Search for foods">
     </div>
     <div class="food-container">
-        <div class="food-grid">
-            <img src="https://cdn-icons-png.freepik.com/256/857/857681.png?semt=ais_hybrid" alt="">
-            <h5>food1</h5>
-            <h6>Calorie: 9999 kcal</h6>
-        </div>
+        <?php
+        while($rows=$result->fetch_assoc()){
+            echo "<div class=\"food-grid\">";
+            echo "<img src=\"$rows[foodImage]\" width=1px>";
+            echo "<h5>$rows[foodName]</h5>";
+            echo "<h6>Calorie: $rows[foodCalories] kcal</h6>";
+            echo "</div>";
+        }
+        ?>
         <div class="food-grid">
             <img src="https://cdn-icons-png.freepik.com/256/857/857681.png?semt=ais_hybrid" alt="">
             <h5>food2</h5>
-            <h6>Calorie: 9999 kcal</h6>
-        </div>
-        <div class="food-grid">
-            <img src="https://cdn-icons-png.freepik.com/256/857/857681.png?semt=ais_hybrid" alt="">
-            <h5>food3</h5>
-            <h6>Calorie: 9999 kcal</h6>
-        </div>
-        <div class="food-grid">
-            <img src="https://cdn-icons-png.freepik.com/256/857/857681.png?semt=ais_hybrid" alt="">
-            <h5>food4</h5>
-            <h6>Calorie: 9999 kcal</h6>
-        </div>
-        <div class="food-grid">
-            <img src="https://cdn-icons-png.freepik.com/256/857/857681.png?semt=ais_hybrid" alt="">
-            <h5>food5</h5>
-            <h6>Calorie: 9999 kcal</h6>
-        </div>
-        <div class="food-grid">
-            <img src="https://cdn-icons-png.freepik.com/256/857/857681.png?semt=ais_hybrid" alt="">
-            <h5>food6</h5>
-            <h6>Calorie: 9999 kcal</h6>
-        </div>
-        <div class="food-grid">
-            <img src="https://cdn-icons-png.freepik.com/256/857/857681.png?semt=ais_hybrid" alt="">
-            <h5>food7</h5>
-            <h6>Calorie: 9999kcal</h6>
-        </div>
-        <div class="food-grid">
-            <img src="https://cdn-icons-png.freepik.com/256/857/857681.png?semt=ais_hybrid" alt="">
-            <h5>food8</h5>
-            <h6>Calorie: 9999 kcal</h6>
-        </div>
-        <div class="food-grid">
-            <img src="https://cdn-icons-png.freepik.com/256/857/857681.png?semt=ais_hybrid" alt="">
-            <h5>food9</h5>
             <h6>Calorie: 9999 kcal</h6>
         </div>
     </div>
