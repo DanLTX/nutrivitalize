@@ -19,7 +19,7 @@ $conn->close();
 </head>
 <body>
     <section id="header">
-        <a href="#"><img id="logo" src="newlogo2.png" alt="" class="logo" width="90" height=auto></a>
+        <a href="home.php"><img id="logo" src="newlogo2.png" alt="" class="logo" width="90" height=auto></a>
         <div>
             <ul id="navbar"> 
                 <li><a href="home.php">Home</a></li>
@@ -44,22 +44,33 @@ $conn->close();
     </div>
     <div class="search-food">
         <input type="text" name="searchfood" id="searchfood" placeholder="Search for foods">
-    </div>
-    <div class="food-container">
+        <div class="food-container" id="food-container">
         <?php
-        while($rows=$result->fetch_assoc()){
-            echo "<div class=\"food-grid\">";
-            echo "<img src=\"$rows[foodImage]\" width=1px>";
-            echo "<h5>$rows[foodName]</h5>";
-            echo "<h6>Calorie: $rows[foodCalories] kcal</h6>";
+        while($rows = $result->fetch_assoc()) {
+            echo "<div class=\"food-grid\" data-food-name=\"{$rows['foodName']}\">";
+            echo "<img src=\"{$rows['foodImage']}\" width=\"90\" height=\"auto\">";
+            echo "<h5>{$rows['foodName']}</h5>";
+            echo "<h6>Calorie: {$rows['foodCalories']} kcal</h6>";
             echo "</div>";
         }
         ?>
-        <div class="food-grid">
-            <img src="https://cdn-icons-png.freepik.com/256/857/857681.png?semt=ais_hybrid" alt="">
-            <h5>food2</h5>
-            <h6>Calorie: 9999 kcal</h6>
         </div>
     </div>
+    
+    <script>
+        document.getElementById('searchfood').addEventListener('input', function() {
+            const searchValue = this.value.toLowerCase();
+            const foodItems = document.querySelectorAll('.food-grid');
+
+            foodItems.forEach(function(item) {
+                const foodName = item.getAttribute('data-food-name').toLowerCase();
+                if (foodName.includes(searchValue)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
