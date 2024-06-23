@@ -300,13 +300,57 @@ button {
 
 .calorie-text{
     position: absolute;
-    top: 50%;
+    top: 15%;
     left: 75%;
     transform: translate(-50%, -50%);
     font-size: 30px;
 }
 
-.arrow{
+.food-calorie-container{
+    position: relative;
+  text-align: center;
+  color: white;
+}
+
+.food-calorie-text{
+    position: absolute;
+    top:50%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+}
+
+.bmi-container{
+    position: relative;
+  text-align: center;
+  color: white;
+}
+
+.bmi-text{
+    position: absolute;
+    top:50%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+}
+
+.calorie-arrow{
+    color: whitesmoke;
+    font-size: 100px;
+    position: absolute;
+    right: 80px;
+    top: 10%;
+}
+
+.food-arrow{
+    color: whitesmoke;
+    font-size: 100px;
+    position: absolute;
+    right: 80px;
+    top: 40%;
+}
+
+.bmi-arrow{
     color: whitesmoke;
     font-size: 100px;
     position: absolute;
