@@ -3,6 +3,7 @@ session_start();
 include 'conn.php';
 if(isset($_POST['updatebtn'])){
     $email = $_SESSION['email'];
+    $emailupdate = $_POST['email'];
     $username = $_POST['username'];
     $password = $_POST['password'];
     $age = $_POST['age'];
@@ -14,8 +15,9 @@ if(isset($_POST['updatebtn'])){
     $sql = mysqli_query($conn,$select);
     $row = mysqli_fetch_assoc($sql);
 
-    $update = "update user set username='$username',pass_word='$password',age='$age', gender='$gender', height='$height', weight='$weight' where email like '%$email'";
+    $update = "UPDATE `user` SET `email` = '$emailupdate', `username` = '$username', `pass_word` = '$password', `age` = '$age', `gender` = '$gender', `height` = '$height', `weight` = '$weight' WHERE `user`.`email` = '$email'";
     $sql2=mysqli_query($conn,$update);
+    $_SESSION['email'] = $emailupdate;
     if($sql2){
         header("location: profile.php");
     }
