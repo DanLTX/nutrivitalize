@@ -53,20 +53,37 @@ if (!isset($_SESSION['email'])) {
         
     </section>
     <div class="welcome-container">
-        <img src="welcomeimage.jpg" width="100%" height="600px" style="filter: brightness(50%);">
+        <img src="welcomeimage.jpg" width="100%" height="600px" style="object-fit: cover; object-position: 100% 0; filter: brightness(50%);">
         <?php
         echo "<div class=\"welcometext\"><h1>Welcome $_SESSION[username]</h1></div>";
         ?>
     </div>
     <div class="calorie-container">
-        <img src="home-calc.jpg" width="100%" height="600px" style="object-fit: cover; object-position: 100% 0;" >
+        <img src="home-calc.jpg" width="100%" height="600px" style="object-fit: cover; object-position: 100% 0; filter: brightness(50%);" >
         <div class="button-container">
             <div class="calorie-text"><h1>Calorie Calculator</h1></div>
             <div class="arrowbtn">
-                <a href="calorie_cal.php"><button class="arrow"><i class="bi bi-arrow-right"></i></button></a>
+                <a href="calorie_cal.php"><button class="calorie-arrow"><i class="bi bi-arrow-right"></i></button></a>
             </div>
         </div>
-        
+    <div class="food-calorie-container">
+        <img src="food-calorie.jpg" width="100%" height="600px" style="object-fit: cover; object-position: 100% 0; filter: brightness(50%);" >
+        <div class="button-container">
+            <div class="food-calorie-text"><h1>Food Calorie Checker</h1></div>
+            <div class="arrowbtn">
+                <a href="food.php"><button class="food-arrow"><i class="bi bi-arrow-right"></i></button></a>
+            </div>
+        </div>    
+    </div>
+
+    <div class="bmi-container">
+        <img src="bmi-home.jpg" width="100%" height="600px" style="object-fit: cover; object-position: 100% 0; filter: brightness(50%);" >
+        <div class="button-container">
+            <div class="bmi-text"><h1>BMI Tracker</h1></div>
+            <div class="arrowbtn">
+                <a href="bmi.php"><button class="bmi-arrow"><i class="bi bi-arrow-right"></i></button></a>
+            </div>
+        </div>    
     </div>
    
 
