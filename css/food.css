@@ -1,17 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Stoke:wght@300&display=swap');
 
+
 .filter{
-    background-color: rgb(205, 214, 198);
+    background: rgba(108, 255, 54, 0.18);
     color: black;
     width: 300px;
     height: 800px;
-    box-shadow: 5px 10px 15px 5px black;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     border-radius: 25px;
     margin-top: 120px;
     margin-left: 30px;
     padding: 40px;
     font-size: 12px;
     position: absolute;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+
 }
 
 .food-container{
@@ -27,12 +31,16 @@
 
 .food-grid{
     display: flex;
-    background-color: rgba(121, 114, 114, 0.8);
-    border: 1px solid rgba(0, 0, 0, 0.8);
+    background: rgba(108, 255, 54, 0.18);
+    border-radius: 16px;
     padding: 20px;
     font-size: 30px;
     text-align: center;
     display: block;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(108, 255, 54, 0.2);
 }
 
 .title{
@@ -64,6 +72,7 @@
     margin-left: auto;
     margin-right: auto;
     width: 150px;
+    border-radius: 25px;
 }
 
 .food-grid h5{
