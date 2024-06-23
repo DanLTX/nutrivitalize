@@ -1,3 +1,21 @@
+<?php
+include 'conn.php';
+session_start();
+$email = $_SESSION["email"];
+$sqlauth = "SELECT * FROM admin";
+$result = mysqli_query($conn, $sqlauth);
+if (mysqli_num_rows($result) == 1) {
+    // output data of each row
+    while($row = mysqli_fetch_assoc($result)) {
+        $auth = $row["emailID"];
+    }
+}
+if (!isset($_SESSION['email']) || $_SESSION['email'] != $auth) {
+    header('Location: login.php');
+    session_destroy();
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
