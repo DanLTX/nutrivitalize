@@ -1,11 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Stoke:wght@300&display=swap');
+
 .acc-container{
-    max-width: fit-content;
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(177, 52, 55, 0.2);
+    margin-top: 120px;
     margin-left: auto;
     margin-right: auto;
-    background-color: rgb(185, 174, 174);
-    padding: 50px;
+    position: relative;
+    max-width: 800px;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    padding: 40px 30px;
+    margin-top: 50px;
+    font-size: large;
 }
 
-.details{
-    padding: 100px;
+button {
+    padding: 5px 15px;
+    /* background-color: #20dbc2; */
+    border: none;
+    font-weight: 600;
+    border-radius: 12px;
+    cursor: pointer;
+  align-items: center;
+    
 }
+button:hover{
+    background-color: rgb(182, 248, 245);
+}
+
+.profile{
+        background-image: url(bg01.jpg);/* Ensure the path is correct */
+    background-size: cover; /* Use 'cover' for better scaling */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent repeating of the background image */
+    position: relative;
+    height: 100vh; /* Example height, adjust as needed */
+    width: 100%;
+    }
+
+.logoutbtn{
+    background-color:tomato;
+}
+
+.updatebtn{
+    border-radius: 12px;
+    background-color: lightgreen;
+    text-align: center;
+    margin-left: 270px;
+    width: 90px
+}
+
+.submitbtn{
+    border-radius: 12px;
+    background-color: lightgreen;
+    text-align: center;
+    width: 90px;
+    margin-left: 320px;
+}
+
+.updatebtn:hover{
+    background-color: rgb(182, 248, 245);
+}
+
+.logoutbtn:hover{
+    background-color: rgb(248, 182, 185);
+}
+
+.acc-container h3 {
+        text-align: center;
+    }
+    .acc-container table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .acc-container table td {
+        padding: 10px;
+        vertical-align: middle;
+    }
+    .acc-container table input[type="text"] {
+        width: 100%;
+        padding: 5px;
+    }
+    .acc-container table input[type="radio"] {
+        margin-right: 5px;
+    }
