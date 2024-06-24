@@ -16,6 +16,7 @@ $conn->close();
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/food.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
     <section id="header">
@@ -38,6 +39,44 @@ $conn->close();
     </section>
     <div class="filter">
         <h1>Filter</h1>
+        <div class="filter-btn" id="filter-btn">
+        <button class="btn active" onclick="filterSelection('all')"><i class="material-icons">menu</i>Show all</button>
+        <button class="btn" onclick="filterSelection('meat')">
+    <i class="material-icons">menu</i>Meat</button>
+        <button class="btn" onclick="filterSelection('pastry')">
+    <i class="material-icons">menu</i>Pastry</button>
+        <button class="btn" onclick="filterSelection('dairy')">
+    <i class="material-icons">menu</i>Dairy</button>
+        <button class="btn" onclick="filterSelection('bread')">
+    <i class="material-icons">menu</i>Bread</button>
+        <button class="btn" onclick="filterSelection('dessert')">
+    <i class="material-icons">menu</i>Dessert</button>
+        <button class="btn" onclick="filterSelection('japanese')">
+    <i class="material-icons">menu</i>Japanese</button>
+        <button class="btn" onclick="filterSelection('mexican')">
+    <i class="material-icons">menu</i>Mexican</button>
+        <button class="btn" onclick="filterSelection('italian')">
+    <i class="material-icons">menu</i>Italian</button>
+        <button class="btn" onclick="filterSelection('thai')">
+    <i class="material-icons">menu</i>Thai</button>
+        <button class="btn" onclick="filterSelection('canadian')">
+    <i class="material-icons">menu</i>Canadian</button>
+        <button class="btn" onclick="filterSelection('american')">
+    <i class="material-icons">menu</i>American</button>
+        <button class="btn" onclick="filterSelection('middle eastern')">
+    <i class="material-icons">menu</i>Middle Eastern</button>
+        <button class="btn" onclick="filterSelection('german')">
+    <i class="material-icons">menu</i>German</button>
+        <button class="btn" onclick="filterSelection('korean')">
+    <i class="material-icons">menu</i>Korean</button>
+        <button class="btn" onclick="filterSelection('indian')">
+    <i class="material-icons">menu</i>Indian</button>
+        <button class="btn" onclick="filterSelection('russian')">
+    <i class="material-icons">menu</i>Russian</button>
+        </div>
+        
+        
+        </div>
     </div>
     <div class="title">
         <h1>Food Calorie Checker</h1>
