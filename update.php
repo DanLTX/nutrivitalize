@@ -3,7 +3,6 @@ session_start();
 include 'conn.php';
 if(isset($_POST['updatebtn'])){
     $email = $_SESSION['email'];
-    $emailupdate = $_POST['email'];
     $username = $_POST['username'];
     $password = $_POST['password'];
     $age = $_POST['age'];
@@ -15,9 +14,8 @@ if(isset($_POST['updatebtn'])){
     $sql = mysqli_query($conn,$select);
     $row = mysqli_fetch_assoc($sql);
 
-    $update = "UPDATE `user` SET `email` = '$emailupdate', `username` = '$username', `pass_word` = '$password', `age` = '$age', `gender` = '$gender', `height` = '$height', `weight` = '$weight' WHERE `user`.`email` = '$email'";
+    $update = "update user set username='$username',pass_word='$password',age='$age', gender='$gender', height='$height', weight='$weight' where email like '%$email'";
     $sql2=mysqli_query($conn,$update);
-    $_SESSION['email'] = $emailupdate;
     if($sql2){
         header("location: profile.php");
     }
@@ -77,16 +75,19 @@ if(isset($_POST['updatebtn'])){
     <div class="acc-container">
         <h3>Edit Profile</h3>
         <form action="#" method="post">
+        <br>
         <?php
-        echo "Email : " . "<input type=\"text\" name=\"email\" value=\"$_SESSION[email]\">" . "<br>";
+        echo "Email    : " . "   <input type=\"text\" name=\"email\" value=\"$_SESSION[email]\">" . "<br>";
         echo "Username : " . "<input type=\"text\" name=\"username\" value=\"$_SESSION[username]\">" . "<br>";
         echo "Password : " . "<input type=\"text\" name=\"password\" value=\"$_SESSION[password]\">" . "<br>";
-        echo "Age: " . "<input type=\"text\" name=\"age\" value=\"$_SESSION[age]\">" . "<br>";
-        echo "Gender : " . "<input type=\"radio\" name=\"gender\" value=\"Male\" required>Male" . "<input type=\"radio\" name=\"gender\" value=\"Female\" required>Female" . "<br>";
-        echo "Height : " . "<input type=\"text\" name=\"height\" value=\"$_SESSION[height]\">" . "cm" . "<br>";
-        echo "Weight : " . "<input type=\"text\" name=\"weight\" value=\"$_SESSION[weight]\">" . "kg" . "<br>";
+        echo "Age      : " . "      <input type=\"text\" name=\"age\" value=\"$_SESSION[age]\">" . "<br>";
+        echo "Gender   : " . "  <input type=\"radio\" name=\"gender\" value=\"Male\" required>Male" . "<input type=\"radio\" name=\"gender\" value=\"Female\" required>Female" . "<br>";
+        echo "Height   : " . "  <input type=\"text\" name=\"height\" value=\"$_SESSION[height]\">" . "cm" . "<br>";
+        echo "Weight   : " . "  <input type=\"text\" name=\"weight\" value=\"$_SESSION[weight]\">" . "kg" . "<br>";
         ?>
-        <div class="updatebtn" style="background-color: white; border-radius: 12px;"><button type="submit" name="updatebtn">Update</button></div>
+        <br>
+        <button class="submitbtn" type="submit" name="updatebtn">UPDATE</button>
+        
         </form>
     </div>
 </body>
