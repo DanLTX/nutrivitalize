@@ -13,7 +13,7 @@ session_start();
 
 </head>
 <body>
-<section id="header">
+<section class="profile" id="header">
         <a href="#"><img id="logo" src="newlogo2.png" alt="" class="logo" width="90" height=auto></a>
         <div>
             <ul id="navbar"> 
@@ -36,6 +36,7 @@ session_start();
     </section>
     <div class="acc-container">
         <h3>Account Details</h3>
+        <br>
         <?php
         echo "Email : " . $_SESSION["email"] . "<br>";
         echo "Username : " . $_SESSION["username"] . "<br>";
@@ -46,8 +47,10 @@ session_start();
         echo "Weight : " . $_SESSION["weight"] . "kg";
         
         ?>
-        <a href="update.php"><button style="background-color: lightgreen;">UPDATE</button></a>
-        <a href="logout.php"><button name="logoutbtn" style="background-color:tomato;">LOG OUT</button></a>
+        <br>
+        <br>
+        <a href="update.php"><button class="updatebtn">UPDATE</button></a>
+        <a href="logout.php"><button class="logoutbtn">LOG OUT</button></a>
     </div>
 </body>
 </html>
