@@ -12,8 +12,9 @@ session_start();
     <link rel="stylesheet" href="css/calorie_cal.css">
 </head>
 <body>
+<div class="calorie-bg" > 
 <section id="header">
-        <a href="#"><img id="logo" src="newlogo2.png" alt="" class="logo" width="90" height=auto></a>
+        <a href="home.php"><img id="logo" src="newlogo2.png" alt="" class="logo" width="90" height=auto></a>
         <div>
             <ul id="navbar"> 
                 <li><a href="home.php">Home</a></li>
@@ -47,7 +48,7 @@ session_start();
     }
     
 
-    echo "<div id=\"wrapper\"><h1 class=\"calorie\" id=\"calorie\">$calorie</h1></div>";
+    echo "<div id=\"wrapper\"><h1 class=\"calorie\" id=\"calorie\">$calorie kcal</h1></div>";
 
     echo "<div class=\"details\"><h1>You estimatedly need to consume</h1><h1>$calorie per day.</h1><br><br><h1>See how we calculate</h1>"
     ?>
@@ -55,14 +56,16 @@ session_start();
     <h1>For men: BMR = 13.397W + 4.799H - 5.677A + 88.362</h1>
     <h1>For women: BMR = 9.247W + 3.098H - 4.330A + 447.593</h1>
     </div>
-
+</div>
+ 
     <script>
         (function (d) {
         "use strict";
         const myCounter = d.getElementById("calorie");
-        const myCounter2 = d.getElementById("calorie");
+        const myCounter2 = d.getElementById("calories");
         const myWrapper = d.getElementById("wrapper");
         d.body.classList.add("startBG");
+        var calories = JSON.parse(<?php $calorie; ?>);
         var counter = 0;
         var countdown = setInterval(function () {
             counter++;
