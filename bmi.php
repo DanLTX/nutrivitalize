@@ -116,7 +116,7 @@ $dataPoints = array(
     } elseif ($bmi > 25 && $bmi <= 30) {
         $suggestType = "Overweight";
     } elseif ($bmi >= 18.5 && $bmi <= 24.9) {
-        $suggestType = "Normal Weight";
+        $suggestType = "Normal";
     } elseif ($bmi < 18.5) {
         $suggestType = "Underweight";
     }
