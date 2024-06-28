@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Arvo&family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Stoke:wght@300&display=swap');
 
 *{
     margin: 0;
@@ -21,7 +21,7 @@ body{
     padding: 20px 80px;
     background-color: #e3e3e3;
     box-shadow: 0 5px 15px rgb(0,0,0,0.6);
-    position: sticky ;
+    position: sticky;
     top: 0;
     left: 0;
     height: 76px;
@@ -39,7 +39,7 @@ body{
 }
 
 #navbar li a{
-   position: relative;
+    position: relative;
     text-decoration: none;
     font-size: 16px;
     font-weight: 600;
@@ -47,9 +47,7 @@ body{
     transition:  0.3s ease;
 }
 
-
 #navbar li a:hover{
-    
     color: #056687;
     transition: transform 0.25s ease-out ;
 }
@@ -62,7 +60,6 @@ body{
     left: 0px;
     background: #056687;
     animation: underlineit 0.3s ease-in-out ;
-    
 }
 
 @keyframes underlineit{
@@ -76,22 +73,18 @@ body{
 
 button {
     padding: 5px 15px;
-    /* background-color: #20dbc2; */
     border: none;
     font-weight: 600;
     border-radius: 12px;
     cursor: pointer;
     background-color: transparent;
-    
 }
-
 
 #header button i{
     color: #14ba01;
 }
 
 /* Main */
-
 
 #main{
     background-image: url(image/mainbg.svg);
@@ -105,7 +98,6 @@ button {
     align-items: flex-start;
     justify-content: center;
     transition: all 0.5s ease;
-     
 }
 
 #main button{
@@ -132,8 +124,6 @@ button {
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    /* for resposnisve */
-
 }
 
 #food .foodi{
@@ -147,7 +137,7 @@ button {
 }
 
 #food .foodi:hover {
-   box-shadow: 0 0 5px rgba(217, 232, 18, 1);
+    box-shadow: 0 0 5px rgba(217, 232, 18, 1);
 }
 
 #food .foodi h5{
@@ -158,6 +148,7 @@ button {
     color: #4fc555;
     background-color: #ffc47d;
 }
+
 #food .foodi #f1{
     height: 80%;
     width: 100%;
@@ -167,7 +158,6 @@ button {
 /* Meals */
 
 #meals{
-    
     text-align: center;
     padding: 40px 80px;
     background-color: #e7e7e7;
@@ -179,6 +169,7 @@ button {
     padding-top: 15px;
     flex-wrap: wrap;
 }
+
 #meals .meal{
     background-color: #ffffff;
     width: 20%;
@@ -206,31 +197,25 @@ button {
 
 #header #small,
 #header #close{
-   display: none;
+    display: none;
 }
 
 @media(max-width: 821px){
 
     #header {
         z-index: 1;
+        padding: 20px 40px;
     }
 
     #main{
         background: none; 
         height: 40vh;
-        width: 100%;
         padding: 0 40px;
-        display: flex;
         font-size: 1.2rem;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;     
     }
    
- 
-
     #header #small{
-        display:flex;
+        display: flex;
         position: relative;
         top: 0;
         right: -50px;
@@ -238,12 +223,10 @@ button {
     }
 
     #navbar{
-        display: flex;
         flex-direction: column;
         align-items: flex-start;
-        justify-content: flex-start;
         position: fixed;
-        top: 0px;
+        top: 0;
         right: -300px;
         height: 100vh;
         width: 300px;
@@ -258,30 +241,71 @@ button {
         margin-bottom: 20px;
     }
 
-
     #header #close{
         display: flex;
         position: absolute;
         top: 30px;
         left: 30px;
-        color:#000000;
-        cursor:default;
-  
+        color: #000000;
+        cursor: default;
     }
     
     #navbar.active{
-        right:0px;
+        right: 0;
     }
 
     #ham.active{
         visibility: hidden;
     }
+
+    #food {
+        padding: 20px 40px;
+    }
+
+    #food .foodi {
+        width: 45%;
+    }
+
+    #meals {
+        padding: 20px 40px;
+    }
+
+    #meals .meal {
+        width: 45%;
+    }
+}
+
+@media(max-width: 480px){
+
+    #header {
+        padding: 20px 20px;
+    }
+
+    #main {
+        padding: 0 20px;
+    }
+
+    #food {
+        padding: 20px 20px;
+    }
+
+    #food .foodi {
+        width: 100%;
+    }
+
+    #meals {
+        padding: 20px 20px;
+    }
+
+    #meals .meal {
+        width: 100%;
+    }
 }
 
 .welcome-container{
     position: relative;
-  text-align: center;
-  color: white;
+    text-align: center;
+    color: white;
 }
 
 .welcometext{
@@ -294,8 +318,8 @@ button {
 
 .calorie-container{
     position: relative;
-  text-align: center;
-  color: white;
+    text-align: center;
+    color: white;
 }
 
 .calorie-text{
@@ -308,13 +332,13 @@ button {
 
 .food-calorie-container{
     position: relative;
-  text-align: center;
-  color: white;
+    text-align: center;
+    color: white;
 }
 
 .food-calorie-text{
     position: absolute;
-    top:50%;
+    top: 50%;
     left: 75%;
     transform: translate(-50%, -50%);
     font-size: 30px;
@@ -322,13 +346,13 @@ button {
 
 .bmi-container{
     position: relative;
-  text-align: center;
-  color: white;
+    text-align: center;
+    color: white;
 }
 
 .bmi-text{
     position: absolute;
-    top:50%;
+    top: 50%;
     left: 75%;
     transform: translate(-50%, -50%);
     font-size: 30px;
@@ -351,6 +375,72 @@ button {
 }
 
 .bmi-arrow{
+    color: whitesmoke;
+    font-size: 100px;
+    position: absolute;
+    right: 80px;
+    top: 40%;
+}
+
+.foodD-container{
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.foodD-text{
+    position: absolute;
+    top: 15%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+}
+
+.foodD-arrow{
+    color: whitesmoke;
+    font-size: 100px;
+    position: absolute;
+    right: 80px;
+    top: 12%;
+}
+
+.AdminBMI-container{
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.AdminBMI-text{
+    position: absolute;
+    top: 50%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+}
+
+.AdminBMI-arrow{
+    color: whitesmoke;
+    font-size: 100px;
+    position: absolute;
+    right: 80px;
+    top: 40%;
+}
+
+.AdminUser-container{
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.AdminUser-text{
+    position: absolute;
+    top: 50%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+}
+
+.AdminUser-arrow{
     color: whitesmoke;
     font-size: 100px;
     position: absolute;
