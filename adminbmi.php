@@ -17,6 +17,14 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] != $auth) {
 }
 $sql = " SELECT email,DATE_FORMAT(date,'%D %M %Y'),bmi_value FROM bmi ORDER BY email, date ASC ";
 $result = $conn->query($sql);
+
+if(isset($_POST['addBtn'])){
+    $sql="INSERT INTO bmi (email, date, bmi_value) VALUES ('$_POST[email]', '$_POST[date]','$_POST[bmi_value]')";
+    if(!mysqli_query($conn, $sql)){
+    die('Error:' . mysqli_error($conn));
+    }
+    echo "<script>alert('Successfully Added');window.location.href='adminbmi.php';</script>";
+}
 $conn->close();
 ?>
 <!DOCTYPE html>
@@ -25,7 +33,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User's BMI'</title>
+    <title>BMI Tracker</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/home.css">
     <!-- CSS FOR STYLING THE PAGE -->
@@ -66,12 +74,12 @@ $conn->close();
  
 <body>
 <section id="header">
-        <a href="adminhome.php"><img id="logo" src="newlogo2.png" alt="" class="logo" width="90" height=auto></a>
+        <a href="#"><img id="logo" src="newlogo2.png" alt="" class="logo" width="90" height=auto></a>
         <div>
             <ul id="navbar"> 
                 <li><a href="adminhome.php">Home</a></li>
                 <li><a href="adminfood.php">Food Details</a></li>
-                <li><a href="adminbmi.php">User's BMI</a></li>
+                <li><a href="adminbmi.php">BMI Tracker</a></li>
                 <li><a href="adminuser.php"><i class='bi bi-person-fill'></i>User Details</a></li>
                 <li><a href="login.php"><i class="bi bi-door-closed"></i>Log Out</a></li>
             </ul>
@@ -91,6 +99,14 @@ $conn->close();
                 <th>BMI</th>
                 <th>Action</th>
             </tr>
+            <tr>
+                <form action="" method="post">
+                    <td><input type="text" name="email"></td>
+                    <td><input type="text" name="date"></td>
+                    <td><input type="text" name="bmi_value"></td>
+                    <td><a href=""><button name="addBtn" style="background-color: lightgreen;">Add</button></a></td>
+                </form>
+            </tr>
             <!-- PHP CODE TO FETCH DATA FROM ROWS -->
             <?php 
                 // LOOP TILL END OF DATA
@@ -103,8 +119,8 @@ $conn->close();
                 <td><?php echo $rows['email'];?></td>
                 <td><?php echo $rows["DATE_FORMAT(date,'%D %M %Y')"];?></td>
                 <td><?php echo $rows['bmi_value'];?></td>
-                <td><?php echo "<a href=adminhome.php>Update</a>";?>
-                <?php echo "<a href=adminfood.php>Delete</a>";?></td>
+                <td><?php echo "<a href=updatebmi.php?bmiEmail=$rows[email]>Update</a>";?>
+                <?php echo "<a href=delete.php?bmiEmail=$rows[email]>Delete</a>";?></td>
             </tr>
             <?php
                 }

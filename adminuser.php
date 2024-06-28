@@ -17,6 +17,15 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] != $auth) {
 }
 $sql = " SELECT * FROM user ORDER BY email ASC ";
 $result = $conn->query($sql);
+
+if(isset($_POST['addBtn'])){
+    $sql="INSERT INTO user (email, username, pass_word, age, gender, height, weight) VALUES ('$_POST[email]', '$_POST[username]',
+    '$_POST[password]','$_POST[age]','$_POST[gender]','$_POST[height]','$_POST[weight]')";
+    if(!mysqli_query($conn, $sql)){
+    die('Error:' . mysqli_error($conn));
+    }
+    echo "<script>alert('Successfully Added');window.location.href='adminuser.php';</script>";
+}
 $conn->close();
 ?>
 <!DOCTYPE html>
@@ -61,6 +70,7 @@ $conn->close();
         td {
             font-weight: lighter;
         }
+
     </style>
 </head>
  
@@ -71,7 +81,7 @@ $conn->close();
             <ul id="navbar"> 
                 <li><a href="adminhome.php">Home</a></li>
                 <li><a href="adminfood.php">Food Details</a></li>
-                <li><a href="adminbmi.php">User's BMI</a></li>
+                <li><a href="adminbmi.php">BMI Tracker</a></li>
                 <li><a href="adminuser.php"><i class='bi bi-person-fill'></i>User Details</a></li>
                 <li><a href="login.php"><i class="bi bi-door-closed"></i>Log Out</a></li>
             </ul>
@@ -95,6 +105,18 @@ $conn->close();
                 <th>Weight</th>
                 <th>Action</th>
             </tr>
+            <tr>
+                <form action="" method="post">
+                    <td><input type="text" name="email"></td>
+                    <td><input type="text" name="username"></td>
+                    <td><input type="text" name="password"></td>
+                    <td><input type="text" name="age"></td>
+                    <td><input type="text" name="gender"></td>
+                    <td><input type="text" name="height"></td>
+                    <td><input type="text" name="weight"></td>
+                    <td><a href=""><button name="addBtn" style="background-color: lightgreen;">Add</button></a></td>
+                </form>
+            </tr>
             <!-- PHP CODE TO FETCH DATA FROM ROWS -->
             <?php 
                 // LOOP TILL END OF DATA
@@ -111,8 +133,8 @@ $conn->close();
                 <td><?php echo $rows['gender'];?></td>
                 <td><?php echo $rows['height'];?></td>
                 <td><?php echo $rows['weight'];?></td>
-                <td><?php echo "<a href=adminhome.php>Update</a>";?>
-                <?php echo "<a href=adminfood.php>Delete</a>";?></td>
+                <td><?php echo "<a href=updateuser.php?email=$rows[email]>Update</a>";?>
+                <?php echo "<a href=delete.php?email=$rows[email]>Delete</a>";?></td>
             </tr>
             <?php
                 }

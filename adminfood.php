@@ -17,6 +17,15 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] != $auth) {
 }
 $sql = " SELECT * FROM food ORDER BY foodName ASC ";
 $result = $conn->query($sql);
+
+
+if(isset($_POST['addBtn'])){
+    $sql="INSERT INTO food (foodName, foodCalories, foodCategory, foodImage) VALUES ('$_POST[foodName]', '$_POST[foodCalories]','$_POST[foodCategory]','$_POST[foodImage]')";
+    if(!mysqli_query($conn, $sql)){
+    die('Error:' . mysqli_error($conn));
+    }
+    echo "<script>alert('Successfully Added');window.location.href='adminfood.php';</script>";
+}
 $conn->close();
 ?>
 <!DOCTYPE html>
@@ -61,17 +70,18 @@ $conn->close();
         td {
             font-weight: lighter;
         }
+
     </style>
 </head>
  
 <body>
 <section id="header">
-        <a href="adminhome.php"><img id="logo" src="newlogo2.png" alt="" class="logo" width="90" height=auto></a>
+        <a href="#"><img id="logo" src="newlogo2.png" alt="" class="logo" width="90" height=auto></a>
         <div>
             <ul id="navbar"> 
                 <li><a href="adminhome.php">Home</a></li>
                 <li><a href="adminfood.php">Food Details</a></li>
-                <li><a href="adminbmi.php">User's BMI</a></li>
+                <li><a href="adminbmi.php">BMI Tracker</a></li>
                 <li><a href="adminuser.php"><i class='bi bi-person-fill'></i>User Details</a></li>
                 <li><a href="login.php"><i class="bi bi-door-closed"></i>Log Out</a></li>
             </ul>
@@ -92,6 +102,15 @@ $conn->close();
                 <th>Image</th>
                 <th>Action</th>
             </tr>
+            <tr>
+                <form action="" method="post">
+                    <td><input type="text" name="foodName"></td>
+                    <td><input type="text" name="foodCalories"></td>
+                    <td><input type="text" name="foodCategory"></td>
+                    <td><input type="text" name="foodImage"></td>
+                    <td><a href=""><button name="addBtn" style="background-color: lightgreen;">Add</button></a></td>
+                </form>
+            </tr>
             <!-- PHP CODE TO FETCH DATA FROM ROWS -->
             <?php 
                 // LOOP TILL END OF DATA
@@ -105,14 +124,13 @@ $conn->close();
                 <td><?php echo $rows['foodCalories'];?></td>
                 <td><?php echo $rows['foodCategory'];?></td>
                 <td><?php echo $rows['foodImage'];?></td>
-                <td><?php echo "<a href=adminhome.php>Update</a>";?>
-                <?php echo "<a href=adminfood.php>Delete</a>";?></td>
+                <td><?php echo "<a href=updatefood.php?foodID=$rows[foodID]><button style='background-color: lightgreen; margin-bottom: 5px'>Update</button></a>";?>
+                <?php echo "<a href=delete.php?foodID=$rows[foodID]><button style='background-color: red;'>Delete</button></a>";?></td>
             </tr>
             <?php
                 }
             ?>
         </table>
-        <div style="text-align: center; padding-top:10px"><a href="#"><button style="background-color: lightgreen; width:10%;">Add</button></a></div>
     </section>
 </body>
  
