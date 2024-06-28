@@ -2,7 +2,7 @@
 include 'conn.php';
 session_start();
 $email = $_SESSION["email"];
-$sqlauth = "SELECT * FROM admin";
+$sqlauth = "SELECT * FROM admin where emailID = '$email' ";
 $result = mysqli_query($conn, $sqlauth);
 if (mysqli_num_rows($result) == 1) {
     // output data of each row

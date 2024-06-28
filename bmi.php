@@ -1,7 +1,20 @@
 <?php
 session_start();
 include 'conn.php';
-
+$email = $_SESSION["email"];
+$sqlauth = "SELECT * FROM user where email = '$email' ";
+$result = mysqli_query($conn, $sqlauth);
+if (mysqli_num_rows($result) == 1) {
+    // output data of each row
+    while($row = mysqli_fetch_assoc($result)) {
+        $auth = $row["email"];
+    }
+}
+if (!isset($_SESSION['email']) || $_SESSION['email'] != $auth) {
+    header('Location: login.php');
+    session_destroy();
+    exit();
+}
 $email = $_SESSION["email"];
 $sql = " SELECT bmi_value, MONTHNAME(date) FROM bmi WHERE email LIKE '%$email' ORDER BY date ASC";
 $result = $conn->query($sql);
@@ -113,12 +126,16 @@ $dataPoints = array(
     // Assuming you already have the $bmi variable and $conn connection established
     if ($bmi > 30) {
         $suggestType = "Obesity";
+        $suggestID = 3;
     } elseif ($bmi > 25 && $bmi <= 30) {
         $suggestType = "Overweight";
+        $suggestID = 2;
     } elseif ($bmi >= 18.5 && $bmi <= 24.9) {
         $suggestType = "Normal";
+        $suggestID = 1;
     } elseif ($bmi < 18.5) {
         $suggestType = "Underweight";
+        $suggestID = 4;
     }
 
     if (isset($suggestType)) {
@@ -139,11 +156,10 @@ $dataPoints = array(
         }
     }
     ?>
-</div>
-</body>
-</html>
-
-<?php
+    <?php
 // Close the database connection at the end of the script
 $conn->close();
 ?>
+</div>
+</body>
+</html>

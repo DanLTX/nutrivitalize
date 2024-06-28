@@ -2,7 +2,7 @@
 include 'conn.php';
 session_start();
 $email = $_SESSION["email"];
-$sqlauth = "SELECT * FROM admin";
+$sqlauth = "SELECT * FROM admin where emailID = '$email' ";
 $result = mysqli_query($conn, $sqlauth);
 if (mysqli_num_rows($result) == 1) {
     // output data of each row
@@ -26,6 +26,7 @@ if(isset($_POST['addBtn'])){
     }
     echo "<script>alert('Successfully Added');window.location.href='adminuser.php';</script>";
 }
+
 $conn->close();
 ?>
 <!DOCTYPE html>
@@ -70,7 +71,6 @@ $conn->close();
         td {
             font-weight: lighter;
         }
-
     </style>
 </head>
  
@@ -81,7 +81,7 @@ $conn->close();
             <ul id="navbar"> 
                 <li><a href="adminhome.php">Home</a></li>
                 <li><a href="adminfood.php">Food Details</a></li>
-                <li><a href="adminbmi.php">BMI Tracker</a></li>
+                <li><a href="adminbmi.php">User's BMI</a></li>
                 <li><a href="adminuser.php"><i class='bi bi-person-fill'></i>User Details</a></li>
                 <li><a href="login.php"><i class="bi bi-door-closed"></i>Log Out</a></li>
             </ul>

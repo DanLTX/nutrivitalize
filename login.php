@@ -20,13 +20,13 @@ else if(isset($_POST['submitLog'])){
         header("Location: home.php");
     }  
     else{  
-        $sqlLog2 = "select * from admin where emailID = '$email' and pass_word = '$password'";  
+        $sqlLog2 = "select * from admin where emailID = '$email' and pass_word = '$password'";   
         $result = mysqli_query($conn, $sqlLog2);  
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
         $count = mysqli_num_rows($result);
         if($count == 1){
             header("Location: adminhome.php");
-        }  
+        }
     }
     $_SESSION["email"] = $email;
 }

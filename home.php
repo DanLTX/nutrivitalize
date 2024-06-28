@@ -18,7 +18,11 @@ if (!isset($_SESSION['email'])) {
 </head>
 <body>
     <section id="header">
-        <a href="#"><img id="logo" src="newlogo2.png" alt="" class="logo" width="90" height=auto></a>
+    <div> <a href="#"><img id="logo" src="newlogo2.png" alt="" class="logo" width="90" height=auto></a>
+    
+    </div>
+       
+        
         <div>
             <ul id="navbar"> 
                 <li><a href="home.php">Home</a></li>
@@ -89,3 +93,6 @@ if (!isset($_SESSION['email'])) {
 
 </body>
 </html>
+<?php
+    include 'footer.php' ;
+?>

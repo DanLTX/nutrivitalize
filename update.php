@@ -1,6 +1,22 @@
 <?php
 session_start();
 include 'conn.php';
+
+$email = $_SESSION["email"];
+$sqlauth = "SELECT * FROM user where email = '$email' ";
+$result = mysqli_query($conn, $sqlauth);
+if (mysqli_num_rows($result) == 1) {
+    // output data of each row
+    while($row = mysqli_fetch_assoc($result)) {
+        $auth = $row["email"];
+    }
+}
+if (!isset($_SESSION['email']) || $_SESSION['email'] != $auth) {
+    header('Location: login.php');
+    session_destroy();
+    exit();
+}
+
 if(isset($_POST['updatebtn'])){
     $email = $_SESSION['email'];
     $username = $_POST['username'];
@@ -77,7 +93,7 @@ if(isset($_POST['updatebtn'])){
         <form action="#" method="post">
         <br>
         <?php
-        echo "Email    : " . "   <input type=\"text\" name=\"email\" value=\"$_SESSION[email]\">" . "<br>";
+        echo "Email : " . $_SESSION["email"] . "<br>";
         echo "Username : " . "<input type=\"text\" name=\"username\" value=\"$_SESSION[username]\">" . "<br>";
         echo "Password : " . "<input type=\"text\" name=\"password\" value=\"$_SESSION[password]\">" . "<br>";
         echo "Age      : " . "      <input type=\"text\" name=\"age\" value=\"$_SESSION[age]\">" . "<br>";

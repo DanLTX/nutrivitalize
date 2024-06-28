@@ -1,8 +1,8 @@
 <?php
 include 'conn.php';
 session_start();
-$email = $_SESSION["email"];
-$sqlauth = "SELECT * FROM admin";
+$emails = $_SESSION["email"];
+$sqlauth = "SELECT * FROM admin where emailID = '$emails' ";
 $result = mysqli_query($conn, $sqlauth);
 if (mysqli_num_rows($result) == 1) {
     // output data of each row
@@ -16,13 +16,13 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] != $auth) {
     exit();
 }
 
-$email = $_GET['email'];
-$sql = "SELECT * FROM user WHERE email LIKE '%$email'";
+$emails = $_GET['email'];
+$sql = "SELECT * FROM user WHERE email LIKE '%$emails'";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) == 1) {
     // output data of each row
     while($row = mysqli_fetch_assoc($result)) {
-        $_SESSION["email"] = $row["email"];
+        $_SESSION["useremail"] = $row["email"];
         $_SESSION["username"] = $row["username"];
         $_SESSION["password"] = $row["pass_word"];
         $_SESSION["age"] = $row["age"];
@@ -33,13 +33,13 @@ if (mysqli_num_rows($result) == 1) {
 }
 
 if(isset($_POST['updatebtn'])){
-    $email = $_POST['email'];
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $age = $_POST['age'];
-    $gender = $_POST['gender'];
-    $height = $_POST['height'];
-    $weight = $_POST['weight'];
+    $email = $_POST["useremail"];
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    $age = $_POST["age"];
+    $gender = $_POST["gender"];
+    $height = $_POST["height"];
+    $weight = $_POST["weight"];
 
 
     $update = "update user set username='$username',pass_word='$password',age='$age', gender='$gender', height='$height', weight='$weight' where email like '%$email'";
@@ -81,10 +81,10 @@ if(isset($_POST['updatebtn'])){
     </section>
     <div class="acc-container">
         <h3>Update User</h3>
-        <form action="adminuser.php" method="post">
+        <form action="" method="post">
         <br>
         <?php
-        echo "Email    : " . "   <input type=\"text\" name=\"email\" value=\"$_SESSION[email]\">" . "<br>";
+        echo "Email    : " . "   <input type=\"text\" name=\"useremail\" value=\"$_SESSION[useremail]\">" . "<br>";
         echo "Username : " . "<input type=\"text\" name=\"username\" value=\"$_SESSION[username]\">" . "<br>";
         echo "Password : " . "<input type=\"text\" name=\"password\" value=\"$_SESSION[password]\">" . "<br>";
         echo "Age      : " . "      <input type=\"text\" name=\"age\" value=\"$_SESSION[age]\">" . "<br>";

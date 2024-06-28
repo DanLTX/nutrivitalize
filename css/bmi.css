@@ -6,7 +6,10 @@
     -moz-box-shadow: 0 14px 6px -6px #222;
     box-shadow: 0 14px 50px -6px #222;
     position: relative;
+    font-size: large;
 }
+
+
 
 .arrow{
     text-align: end;
@@ -28,3 +31,4 @@
                 1px -5px 15px lightgreen,
                 -1px -5px 15px lightgreen;
 }
+

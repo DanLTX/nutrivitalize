@@ -2,7 +2,7 @@
 include 'conn.php';
 session_start();
 $email = $_SESSION["email"];
-$sqlauth = "SELECT * FROM admin";
+$sqlauth = "SELECT * FROM admin where emailID = '$email' ";
 $result = mysqli_query($conn, $sqlauth);
 if (mysqli_num_rows($result) == 1) {
     // output data of each row
@@ -18,7 +18,6 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] != $auth) {
 $sql = " SELECT * FROM food ORDER BY foodName ASC ";
 $result = $conn->query($sql);
 
-
 if(isset($_POST['addBtn'])){
     $sql="INSERT INTO food (foodName, foodCalories, foodCategory, foodImage) VALUES ('$_POST[foodName]', '$_POST[foodCalories]','$_POST[foodCategory]','$_POST[foodImage]')";
     if(!mysqli_query($conn, $sql)){
@@ -26,6 +25,7 @@ if(isset($_POST['addBtn'])){
     }
     echo "<script>alert('Successfully Added');window.location.href='adminfood.php';</script>";
 }
+
 $conn->close();
 ?>
 <!DOCTYPE html>
@@ -70,18 +70,17 @@ $conn->close();
         td {
             font-weight: lighter;
         }
-
     </style>
 </head>
  
 <body>
 <section id="header">
-        <a href="#"><img id="logo" src="newlogo2.png" alt="" class="logo" width="90" height=auto></a>
+        <a href="adminhome.php"><img id="logo" src="newlogo2.png" alt="" class="logo" width="90" height=auto></a>
         <div>
             <ul id="navbar"> 
                 <li><a href="adminhome.php">Home</a></li>
                 <li><a href="adminfood.php">Food Details</a></li>
-                <li><a href="adminbmi.php">BMI Tracker</a></li>
+                <li><a href="adminbmi.php">User's BMI</a></li>
                 <li><a href="adminuser.php"><i class='bi bi-person-fill'></i>User Details</a></li>
                 <li><a href="login.php"><i class="bi bi-door-closed"></i>Log Out</a></li>
             </ul>
@@ -131,6 +130,7 @@ $conn->close();
                 }
             ?>
         </table>
+        
     </section>
 </body>
  
