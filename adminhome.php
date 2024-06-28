@@ -32,7 +32,7 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] != $auth) {
         <ul id="navbar"> 
             <li><a href="adminhome.php">Home</a></li>
             <li><a href="adminfood.php">Food Details</a></li>
-            <li><a href="adminbmi.php">BMI Tracker</a></li>
+            <li><a href="adminbmi.php">User's BMI</a></li>
             <li><a href="adminuser.php"><i class='bi bi-person-fill'></i>User Details</a></li>
             <li><a href="login.php"><i class="bi bi-door-closed"></i>Log Out</a></li>
         </ul>
@@ -42,24 +42,38 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] != $auth) {
     </div>
     
 </section>
-    <h1>testadmin</h1>
-    <div id="wrapper" >
-    <h1 id="counter"></h1>
+    <div class="welcome-container">
+        <img src="welcomeimage.jpg" width="100%" height="600px" style="object-fit: cover; object-position: 100% 0; filter: brightness(50%);">
+        <?php
+        echo "<div class=\"welcometext\"><h1>Admin Page</h1></div>";
+        ?>
     </div>
-    <script>
-        (function (d) {
-        "use strict";
-        const myCounter = d.getElementById("counter");
-        const myWrapper = d.getElementById("wrapper");
-        d.body.classList.add("startBG");
-        var counter = 0;
-        var countdown = setInterval(function () {
-            counter++;
-            myWrapper.style.backgroundSize = "100% " + counter + "%";
-            myCounter.textContent = counter;
-            if (counter == 100) clearInterval(countdown);
-        }, 50);
-        })(document);
-    </script>
+    <div class="foodD-container">
+        <img src="food-details.png" width="100%" height="600px" style="object-fit: cover; object-position: 100% 0; filter: brightness(50%);" >
+        <div class="button-container">
+            <div class="calorie-text"><h1>Food Details</Details></h1></div>
+            <div class="arrowbtn">
+                <a href="adminfood.php"><button class="foodD-arrow"><i class="bi bi-arrow-right"></i></button></a>
+            </div>
+        </div>
+    <div class="AdminBMI-container">
+        <img src="bmi-home.jpg" width="100%" height="600px" style="object-fit: cover; object-position: 100% 0; filter: brightness(50%);" >
+        <div class="button-container">
+            <div class="AdminBMI-text"><h1>User's BMI</h1></div>
+            <div class="arrowbtn">
+                <a href="adminbmi.php"><button class="AdminBMI-arrow"><i class="bi bi-arrow-right"></i></button></a>
+            </div>
+        </div>    
+    </div>
+
+    <div class="AdminUser-container">
+        <img src="adminuserpic.jpg" width="100%" height="600px" style="object-fit: cover; object-position: 100% 0; filter: brightness(50%);" >
+        <div class="button-container">
+            <div class="AdminUser-text"><h1>User Details</h1></div>
+            <div class="arrowbtn">
+                <a href="adminuser.php"><button class="AdminUser-arrow"><i class="bi bi-arrow-right"></i></button></a>
+            </div>
+        </div>    
+    </div>
 </body>
 </html>
