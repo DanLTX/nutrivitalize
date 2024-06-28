@@ -2,10 +2,25 @@
 session_start();
 include 'conn.php';
 
-$sql = "SELECT * FROM food";
-$result = $conn->query($sql);
-$conn->close();
+// Fetch categories
+$categorySql = "SELECT DISTINCT foodCategory FROM food";
+$categoryResult = $conn->query($categorySql);
 
+// Get selected category
+$selectedCategory = isset($_GET['foodCategory']) ? $_GET['foodCategory'] : 'all';
+
+// Fetch food items based on selected category
+if ($selectedCategory == 'all') {
+    $foodSql = "SELECT * FROM food";
+    $foodResult = $conn->query($foodSql);
+} else {
+    $foodSql = $conn->prepare("SELECT * FROM food WHERE foodCategory = ?");
+    $foodSql->bind_param("s", $selectedCategory);
+    $foodSql->execute();
+    $foodResult = $foodSql->get_result();
+}
+
+$conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,47 +50,20 @@ $conn->close();
         <div id="small">
             <i id="ham" class="bi bi-list"></i>
         </div>
-        
     </section>
     <div class="filter">
         <h1>Filter</h1>
         <div class="filter-btn" id="filter-btn">
-        <button class="btn active" onclick="filterSelection('all')"><i class="material-icons">menu</i>Show all</button>
-        <button class="btn" onclick="filterSelection('meat')">
-    <i class="material-icons">menu</i>Meat</button>
-        <button class="btn" onclick="filterSelection('pastry')">
-    <i class="material-icons">menu</i>Pastry</button>
-        <button class="btn" onclick="filterSelection('dairy')">
-    <i class="material-icons">menu</i>Dairy</button>
-        <button class="btn" onclick="filterSelection('bread')">
-    <i class="material-icons">menu</i>Bread</button>
-        <button class="btn" onclick="filterSelection('dessert')">
-    <i class="material-icons">menu</i>Dessert</button>
-        <button class="btn" onclick="filterSelection('japanese')">
-    <i class="material-icons">menu</i>Japanese</button>
-        <button class="btn" onclick="filterSelection('mexican')">
-    <i class="material-icons">menu</i>Mexican</button>
-        <button class="btn" onclick="filterSelection('italian')">
-    <i class="material-icons">menu</i>Italian</button>
-        <button class="btn" onclick="filterSelection('thai')">
-    <i class="material-icons">menu</i>Thai</button>
-        <button class="btn" onclick="filterSelection('canadian')">
-    <i class="material-icons">menu</i>Canadian</button>
-        <button class="btn" onclick="filterSelection('american')">
-    <i class="material-icons">menu</i>American</button>
-        <button class="btn" onclick="filterSelection('middle eastern')">
-    <i class="material-icons">menu</i>Middle Eastern</button>
-        <button class="btn" onclick="filterSelection('german')">
-    <i class="material-icons">menu</i>German</button>
-        <button class="btn" onclick="filterSelection('korean')">
-    <i class="material-icons">menu</i>Korean</button>
-        <button class="btn" onclick="filterSelection('indian')">
-    <i class="material-icons">menu</i>Indian</button>
-        <button class="btn" onclick="filterSelection('russian')">
-    <i class="material-icons">menu</i>Russian</button>
-        </div>
-        
-        
+            <form method="GET" action="food.php">
+                <button class="btn <?php if ($selectedCategory == 'all') echo 'active'; ?>" name="category" value="all" type="submit">
+                    <i class="material-icons">menu</i>Show all
+                </button>
+                <?php while ($row = $categoryResult->fetch_assoc()): ?>
+                    <button class="btn <?php if ($selectedCategory == $row['foodCategory']) echo 'active'; ?>" name="foodCategory" value="<?= $row['foodCategory'] ?>" type="submit">
+                        <i class="material-icons">menu</i><?= ucfirst($row['foodCategory']) ?>
+                    </button>
+                <?php endwhile; ?>
+            </form>
         </div>
     </div>
     <div class="title">
@@ -85,11 +73,11 @@ $conn->close();
         <input type="text" name="searchfood" id="searchfood" placeholder="Search for foods">
         <div class="food-container" id="food-container">
         <?php
-        while($rows = $result->fetch_assoc()) {
-            echo "<div class=\"food-grid\" data-food-name=\"{$rows['foodName']}\">";
-            echo "<img src=\"{$rows['foodImage']}\" width=\"90\" height=\"auto\">";
-            echo "<h5>{$rows['foodName']}</h5>";
-            echo "<h6>Calorie: {$rows['foodCalories']} kcal</h6>";
+        while ($row = $foodResult->fetch_assoc()) {
+            echo "<div class=\"food-grid\" data-food-name=\"{$row['foodName']}\">";
+            echo "<img src=\"{$row['foodImage']}\" width=\"90\" height=\"auto\">";
+            echo "<h5>{$row['foodName']}</h5>";
+            echo "<h6>Calorie: {$row['foodCalories']} kcal</h6>";
             echo "</div>";
         }
         ?>
