@@ -5,7 +5,9 @@ include 'conn.php';
 $email = $_SESSION["email"];
 $sql = " SELECT bmi_value, MONTHNAME(date) FROM bmi WHERE email LIKE '%$email' ORDER BY date ASC";
 $result = $conn->query($sql);
-$conn->close();
+
+$suggestTypeSql = "SELECT DISTINCT suggestType FROM suggestion";
+$suggestTypeResult = $conn->query($suggestTypeSql);
 
 $height = $_SESSION['height'] / 100;
 $weight = $_SESSION['weight'];
@@ -42,14 +44,14 @@ $dataPoints = array(
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>BMI Tracker</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/bmi.css">
 </head>
 <body>
 <section id="header">
-        <a href="#"><img id="logo" src="newlogo2.png" alt="" class="logo" width="90" height=auto></a>
+        <a href="home.php"><img id="logo" src="newlogo2.png" alt="" class="logo" width="90" height=auto></a>
         <div>
             <ul id="navbar"> 
                 <li><a href="home.php">Home</a></li>
@@ -105,5 +107,43 @@ $dataPoints = array(
     echo "<h1 class=\"bmi\">BMI = $bmi</h1>";
     
     ?>
+
+    <div class="updatebar">
+    <?php
+    // Assuming you already have the $bmi variable and $conn connection established
+    if ($bmi > 30) {
+        $suggestType = "Obesity";
+    } elseif ($bmi > 25 && $bmi <= 30) {
+        $suggestType = "Overweight";
+    } elseif ($bmi >= 18.5 && $bmi <= 24.9) {
+        $suggestType = "Normal Weight";
+    } elseif ($bmi < 18.5) {
+        $suggestType = "Underweight";
+    }
+
+    if (isset($suggestType)) {
+        echo "<h1>$suggestType</h1>";
+
+        $suggestTextSql = "SELECT suggestText FROM suggestion WHERE suggestType = '$suggestType'";
+        $suggestTextResult = $conn->query($suggestTextSql);
+        echo "<br>";
+        echo "<h2>Suggestion:</h2>";
+        echo "<br>";
+        if ($suggestTextResult->num_rows > 0) {
+            while ($textRow = $suggestTextResult->fetch_assoc()) {
+                $suggestText = $textRow['suggestText'];
+                echo "<h2>$suggestText</h2>";
+            }
+        } else {
+            echo "No suggestions available.";
+        }
+    }
+    ?>
+</div>
 </body>
 </html>
+
+<?php
+// Close the database connection at the end of the script
+$conn->close();
+?>
