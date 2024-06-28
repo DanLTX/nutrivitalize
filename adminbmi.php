@@ -25,7 +25,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Details</title>
+    <title>User's BMI'</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/home.css">
     <!-- CSS FOR STYLING THE PAGE -->
@@ -66,12 +66,12 @@ $conn->close();
  
 <body>
 <section id="header">
-        <a href="#"><img id="logo" src="newlogo2.png" alt="" class="logo" width="90" height=auto></a>
+        <a href="adminhome.php"><img id="logo" src="newlogo2.png" alt="" class="logo" width="90" height=auto></a>
         <div>
             <ul id="navbar"> 
                 <li><a href="adminhome.php">Home</a></li>
                 <li><a href="adminfood.php">Food Details</a></li>
-                <li><a href="adminbmi.php">BMI Tracker</a></li>
+                <li><a href="adminbmi.php">User's BMI</a></li>
                 <li><a href="adminuser.php"><i class='bi bi-person-fill'></i>User Details</a></li>
                 <li><a href="login.php"><i class="bi bi-door-closed"></i>Log Out</a></li>
             </ul>
