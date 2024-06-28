@@ -5,7 +5,7 @@
     background: rgba(108, 255, 54, 0.18);
     color: black;
     width: 300px;
-    height: 800px;
+    height: 1100px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     border-radius: 25px;
     margin-top: 120px;
@@ -15,7 +15,7 @@
     position: absolute;
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
-
+    border: 1px solid rgba(108, 255, 54, 0.2);
 }
 
 .food-container{
@@ -81,4 +81,39 @@
 
 .food-grid h6{
     font-size: 18px;
+}
+
+body {
+  background-image: 'bruh.jpg';
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+}
+
+button {
+  font-size: 1.4em;
+  padding: 0.6em 0.8em;
+  border-radius: 0.5em;
+  width: 200px;
+  border: none;
+  background-color: #ffffff;
+  margin-top: 10px;
+  margin-left: 10px;
+  color: #292929;
+  cursor: pointer;
+  box-shadow: 2px 2px 3px #000000b4;
+}
+
+button:hover {
+  background: #8bf18b52;
+}
+
+
+.material-icons{
+    width: 15px;
+    height: 5px;
+    position: relative;
+    right: 35px;
+    top: 5px;
+    visibility: hidden;
 }
