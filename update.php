@@ -31,25 +31,7 @@ if(isset($_POST['updatebtn'])){
     $row = mysqli_fetch_assoc($sql);
 
     $update = "update user set username='$username',pass_word='$password',age='$age', gender='$gender', height='$height', weight='$weight' where email like '%$email'";
-    
-    $currentdate = date("Y-m-d");
-    $height = $_POST['height'] / 100;
-    $weight = $_POST['weight'];
-    $bmi = round($weight  / pow($height,2),1);
-    $currentdate = date("Y-m-d");
-    if ($bmi > 30) {
-        $suggestID = 3;
-    } elseif ($bmi > 25 && $bmi <= 30) {
-        $suggestID = 2;
-    } elseif ($bmi >= 18.5 && $bmi <= 24.9) {   
-        $suggestID = 1;
-    } elseif ($bmi < 18.5) {
-        $suggestID = 4;
-    }
-
-    $update2 = "update bmi set suggestID='$suggestID', date='$currentdate', bmi_value='$bmi' where email like '%$email' ORDER BY date DESC limit 1";
     $sql2=mysqli_query($conn,$update);
-    $sql3=mysqli_query($conn,$update2);
     if($sql2){
         header("location: profile.php");
     }
@@ -149,3 +131,6 @@ if(isset($_POST['updatebtn'])){
 </script>
 </body>
 </html>
+<?php
+    include 'footer.php' ;
+?>

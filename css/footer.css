@@ -8,6 +8,10 @@ background:#000;
 padding:30px 0px;
 font-family: 'Play', sans-serif;
 text-align:center;
+position:static;
+display:flex;
+flex-direction:column;
+margin-top: auto;
 }
 
 .footer .row{
@@ -56,3 +60,4 @@ text-align:left;
 margin:0% 3%;
 }
 }
+

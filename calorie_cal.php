@@ -78,3 +78,6 @@ session_start();
     </script>
 </body>
 </html>
+<?php
+    include 'footer.php' ;
+?>

@@ -1,7 +1,7 @@
 <?php
 define('db_user','root');
-define('db_password','');
-define('db_host','localhost:3307');
+define('db_password','67247041abc');
+define('db_host','localhost');
 define('db_name','nutrivitalize');
 
 

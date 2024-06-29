@@ -61,6 +61,7 @@ if(isset($_POST['updatebtn'])){
     <title>Update Food</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/update.css">
     <link rel="stylesheet" href="css/profile.css">
 </head>
 <body>
@@ -84,13 +85,19 @@ if(isset($_POST['updatebtn'])){
         <form action="" method="post">
         <br>
         <?php
-        echo "Email    : " . "   <input type=\"text\" name=\"useremail\" value=\"$_SESSION[useremail]\">" . "<br>";
-        echo "Username : " . "<input type=\"text\" name=\"username\" value=\"$_SESSION[username]\">" . "<br>";
-        echo "Password : " . "<input type=\"text\" name=\"password\" value=\"$_SESSION[password]\">" . "<br>";
-        echo "Age      : " . "      <input type=\"text\" name=\"age\" value=\"$_SESSION[age]\">" . "<br>";
-        echo "Gender      : " . "      <input type=\"text\" name=\"gender\" value=\"$_SESSION[gender]\">" . "<br>";
-        echo "Height      : " . "      <input type=\"text\" name=\"height\" value=\"$_SESSION[height]\">" . "<br>";
-        echo "Weight      : " . "      <input type=\"text\" name=\"weight\" value=\"$_SESSION[weight]\">" . "<br>";
+        echo "Email: <br>
+              $_SESSION[useremail]<br><br>";
+        echo "Username: <input type=\"text\" name=\"username\" value=\"$_SESSION[username]\" required><br>";
+        echo "Password: <div class=\"password-container\">
+                    <input type=\"password\" id=\"password\" name=\"password\" value=\"$_SESSION[password]\" required>
+                    <i class=\"bi bi-eye-slash password-toggle\" id=\"togglePassword\"></i>
+                </div>";
+        echo "Age: <input type=\"text\" name=\"age\" value=\"$_SESSION[age]\" required><br><br>";
+        echo "Gender: <br>
+              <input type=\"radio\" id=\"male\" name=\"gender\" value=\"Male\" " . ($_SESSION['gender'] == 'Male' ? 'checked' : '') . " required><label for=\"male\">Male</label>
+              <input type=\"radio\" id=\"female\" name=\"gender\" value=\"Female\" " . ($_SESSION['gender'] == 'Female' ? 'checked' : '') . " required><label for=\"female\">Female</label><br><br>";
+        echo "Height(cm): <input type=\"text\" name=\"height\" value=\"$_SESSION[height]\" required><br>";
+        echo "Weight(kg): <input type=\"text\" name=\"weight\" value=\"$_SESSION[weight]\" required><br>";
         ?>
         <br>
         <button class="submitbtn" type="submit" name="updatebtn">UPDATE</button>

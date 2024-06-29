@@ -95,7 +95,7 @@ button:hover{
 }
 
 #top{
-    background: brightness(55%);
+    filter: brightness(75%);
     background-image: url("aboutus.png");
     background-repeat: no-repeat;
     background-size:cover ;
@@ -112,12 +112,12 @@ button:hover{
 }
 #top h1{
     font-family: 'Montserrat';
-    font-size: 5rem;
+    font-size: 3rem;
     color: rgb(255, 255, 255);
 }
 
 #top h3{
-    font-size: 1.5rem;
+    font-size: 0.6rem;
     
 }
 
@@ -127,7 +127,7 @@ button:hover{
     width:650px;
     color: rgb(255, 255, 255);
     line-height: 2.0;
-    font-size: large;
+    font-size:medium;
     
 }
 

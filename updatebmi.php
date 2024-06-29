@@ -32,6 +32,7 @@ if (mysqli_num_rows($result) == 1) {
 
 if(isset($_POST['updatebtn'])){
     $bmiEmail = $_SESSION['bmiEmail'];
+    $bmiVsess =  $_SESSION['bmi_value'];
     $date = $_POST['date'];
     $bmiValue = $_POST['bmiValue'];
     if ($bmiValue > 30) {
@@ -44,7 +45,7 @@ if(isset($_POST['updatebtn'])){
         $suggestID = 4;
     }
 
-    $update = "UPDATE bmi set email='$bmiEmail',suggestID='$suggestID',date='$date', bmi_value='$bmiValue' where email like '%$bmiEmail'";
+    $update = "UPDATE bmi set email='$bmiEmail',suggestID='$suggestID',date='$date', bmi_value='$bmiValue' where email like '%$bmiEmail' and bmi_value='$bmiVsess'";
     $sql2=mysqli_query($conn,$update);
     if($sql2){
         header("location: adminbmi.php");

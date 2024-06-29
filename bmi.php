@@ -22,17 +22,39 @@ $result = $conn->query($sql);
 $suggestTypeSql = "SELECT DISTINCT suggestType FROM suggestion";
 $suggestTypeResult = $conn->query($suggestTypeSql);
 
-$sql2 = "SELECT bmi_value from bmi where email = '$_SESSION[email]' ORDER BY date ASC";
-    $result2 = mysqli_query($conn, $sql2);
-    if (mysqli_num_rows($result2) > 0) {
-        // output data of each row
-        while($row = mysqli_fetch_assoc($result2)) {
-            $bmi = $row["bmi_value"];
-        }
+$height = $_SESSION['height'] / 100;
+$weight = $_SESSION['weight'];
+$bmi = round($weight  / pow($height,2),1);
+
+$currentMonth = date("m");
+$currentYear = date("Y");
+if ($bmi > 30) {
+        $suggestType = "Obesity";
+        $suggestID = 3;
+    } elseif ($bmi > 25 && $bmi <= 30) {
+        $suggestType = "Overweight";
+        $suggestID = 2;
+    } elseif ($bmi >= 18.5 && $bmi <= 24.9) {
+        $suggestType = "Normal";
+        $suggestID = 1;
+    } elseif ($bmi < 18.5) {
+        $suggestType = "Underweight";
+        $suggestID = 4;
     }
-//$height = $_SESSION['height'] / 100;
-//$weight = $_SESSION['weight'];
-//$bmi = round($weight  / pow($height,2),1);
+
+// Check if there is already a record for the current month
+$sqlCheck = "SELECT * FROM bmi WHERE email = '$email' AND MONTH(date) = $currentMonth AND YEAR(date) = $currentYear";
+$resultCheck = mysqli_query($conn, $sqlCheck);
+
+if ($resultCheck && mysqli_num_rows($resultCheck) > 0) {
+    // Update existing record
+    $sqlUpdate = "UPDATE bmi SET bmi_value = $bmi, suggestID = $suggestID, date = NOW() WHERE email = '$email' AND MONTH(date) = '$currentMonth' AND YEAR(date) = '$currentYear'";
+    mysqli_query($conn, $sqlUpdate);
+} elseif ($resultCheck && mysqli_num_rows($resultCheck) == 0) {
+    // Insert new record
+    $sqlInsert = "INSERT INTO bmi (email, suggestID, date, bmi_value) VALUES ('$email','$suggestID', NOW(), '$bmi')";
+    mysqli_query($conn, $sqlInsert);
+}
 
 $dataPoints2 = array();
 while($rows=$result->fetch_assoc()){
@@ -90,9 +112,9 @@ $dataPoints = array(
         
     </section>
     <?php
-    $bgColor = ($bmi < 18.5 || ($bmi > 25 && $bmi <= 30)) ? 'background-image: linear-gradient(to right, yellow, gold);' : '';
+    $bgColor = ($bmi < 18.5 || ($bmi > 25 && $bmi <= 30)) ? 'background-image: linear-gradient(to right, rgb(187, 143, 24), rgb(220, 60, 20));' : '';
 $bgColor = ($bmi > 30) ? 'background-image: linear-gradient(to right, red, crimson);' : $bgColor;
-    $textShadow = ($bmi < 18.5 || ($bmi > 25 && $bmi <= 30)) ? 'yellow' : (($bmi > 30) ? 'red' : 'lightgreen');
+    $textShadow = ($bmi < 18.5 || ($bmi > 25 && $bmi <= 30)) ? 'rgb(187, 143, 24)' : (($bmi > 30) ? 'red' : 'lightgreen');
 
     echo "<div class=\"updatebar\" style=\"$bgColor\">
         <h1>Update height and weight on</h1>
@@ -128,18 +150,9 @@ $bgColor = ($bmi > 30) ? 'background-image: linear-gradient(to right, red, crims
     <div id="chartContainer" style="height: 370px; width: 100%;"></div>
     <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
     <?php
-    $sql = "SELECT bmi_value from bmi where email = '$_SESSION[email]' ORDER BY date ASC";
-    $result = mysqli_query($conn, $sql);
-    if (mysqli_num_rows($result) > 0) {
-        // output data of each row
-        while($row = mysqli_fetch_assoc($result)) {
-            $bmi = $row["bmi_value"];
-        }
-    } 
-
-    //$height = $_SESSION['height'] / 100;
-    //$weight = $_SESSION['weight'];
-    //$bmi = round($weight  / pow($height,2),1);
+    $height = $_SESSION['height'] / 100;
+    $weight = $_SESSION['weight'];
+    $bmi = round($weight  / pow($height,2),1);
    echo "<h1 class=\"bmi\" style=\"text-shadow: -1px 5px 15px $textShadow, 1px 5px 15px $textShadow, 1px -5px 15px $textShadow, -1px -5px 15px $textShadow;\">BMI = $bmi</h1>";
 
     ?>
@@ -153,7 +166,7 @@ $bgColor = ($bmi > 30) ? 'background-image: linear-gradient(to right, red, crims
     } elseif ($bmi > 25 && $bmi <= 30) {
         $suggestType = "Overweight";
         $suggestID = 2;
-    } elseif ($bmi >= 18.5 && $bmi <= 25) {
+    } elseif ($bmi >= 18.5 && $bmi <= 24.9) {
         $suggestType = "Normal";
         $suggestID = 1;
     } elseif ($bmi < 18.5) {
@@ -186,3 +199,6 @@ $conn->close();
 </div>
 </body>
 </html>
+<?php
+    include 'footer.php' ;
+?>

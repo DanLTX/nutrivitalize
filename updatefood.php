@@ -36,7 +36,7 @@ if(isset($_POST['updatebtn'])){
     $foodImage = $_POST['foodImage'];
 
 
-    $update = "UPDATE food set foodName='$foodName',foodCalories='$foodCalories',foodCategory='$foodCategory', foodImage='$foodImage' where foodID = '$foodID'";
+    $update = "UPDATE food set foodName='$foodName',foodCalories='$foodCalories',foodCategory='$foodCategory', foodImage='$foodImage', emailID = '$email' where foodID = '$foodID'";
     $sql2=mysqli_query($conn,$update);
     if($sql2){
         header("location: adminfood.php");
@@ -56,6 +56,7 @@ if(isset($_POST['updatebtn'])){
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/update.css">
 </head>
 <body>
     <section id="header">

@@ -59,7 +59,7 @@ if (!isset($_SESSION['email'])) {
     <div class="welcome-container">
         <img src="welcomeimage.jpg" width="100%" height="600px" style="object-fit: cover; object-position: 100% 0; filter: brightness(50%);">
         <?php
-        echo "<div class=\"welcometext\"><h1>Welcome $_SESSION[username]</h1></div>";
+        echo "<div class=\"welcometext\"><h1>Welcome, $_SESSION[username]</h1></div>";
         ?>
     </div>
     <div class="calorie-container">

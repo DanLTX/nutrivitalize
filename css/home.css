@@ -25,6 +25,7 @@ body{
     top: 0;
     left: 0;
     height: 76px;
+    width: auto; 
 }
 
 #navbar{
@@ -111,87 +112,7 @@ button {
     background-color: #89ffe9;
 }
 
-#hw{
-    color: orangered;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
 
-/* food */
-
-#food{
-    padding: 40px 80px; 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-#food .foodi{
-    width: 180px;
-    min-width: 150px;
-    text-align: center;
-    padding: 25px 15px;
-    border: 1px solid #e3e3e3;
-    border-radius: 3px;
-    margin: 15px 0px;
-}
-
-#food .foodi:hover {
-    box-shadow: 0 0 5px rgba(217, 232, 18, 1);
-}
-
-#food .foodi h5{
-    display: inline-block;
-    padding: 8px 8px 8px 8px;
-    line-height: 1;
-    border-radius: 3px;
-    color: #4fc555;
-    background-color: #ffc47d;
-}
-
-#food .foodi #f1{
-    height: 80%;
-    width: 100%;
-    margin-bottom: 10px ;
-}
-
-/* Meals */
-
-#meals{
-    text-align: center;
-    padding: 40px 80px;
-    background-color: #e7e7e7;
-}
-
-#meals .meal-container{
-    display: flex;
-    justify-content: space-around;
-    padding-top: 15px;
-    flex-wrap: wrap;
-}
-
-#meals .meal{
-    background-color: #ffffff;
-    width: 20%;
-    min-width: 250px;
-    padding: 10px 12px;
-    border: 1px solid #e3e3e3;
-    border-radius: 5%;
-    cursor: pointer;
-    box-shadow: 20px 20px 30px rgba(0,0,0,0.06);
-    margin: 10px 0;
-    transition: 0.3s ease;
-}
-
-#meals .meal:hover{
-    box-shadow: 20px 20px 30px rgba(0,0,0,0.2);
-    transform: scale(1.1);
-}
-
-#meals .meal img{
-    width: 100%;
-    border-radius: 5%;
-}
 
 /* Responsive */
 
@@ -200,107 +121,6 @@ button {
     display: none;
 }
 
-@media(max-width: 821px){
-
-    #header {
-        z-index: 1;
-        padding: 20px 40px;
-    }
-
-    #main{
-        background: none; 
-        height: 40vh;
-        padding: 0 40px;
-        font-size: 1.2rem;
-    }
-   
-    #header #small{
-        display: flex;
-        position: relative;
-        top: 0;
-        right: -50px;
-        align-items: flex-end;
-    }
-
-    #navbar{
-        flex-direction: column;
-        align-items: flex-start;
-        position: fixed;
-        top: 0;
-        right: -300px;
-        height: 100vh;
-        width: 300px;
-        background-color: #e3e3e3;
-        box-shadow: 0 30px 30px rgba(0,0,0,0.2);
-        padding: 80px 0 0 18px;
-        transition: all 0.3s ease;
-        z-index: 2;
-    }
-
-    #navbar li{
-        margin-bottom: 20px;
-    }
-
-    #header #close{
-        display: flex;
-        position: absolute;
-        top: 30px;
-        left: 30px;
-        color: #000000;
-        cursor: default;
-    }
-    
-    #navbar.active{
-        right: 0;
-    }
-
-    #ham.active{
-        visibility: hidden;
-    }
-
-    #food {
-        padding: 20px 40px;
-    }
-
-    #food .foodi {
-        width: 45%;
-    }
-
-    #meals {
-        padding: 20px 40px;
-    }
-
-    #meals .meal {
-        width: 45%;
-    }
-}
-
-@media(max-width: 480px){
-
-    #header {
-        padding: 20px 20px;
-    }
-
-    #main {
-        padding: 0 20px;
-    }
-
-    #food {
-        padding: 20px 20px;
-    }
-
-    #food .foodi {
-        width: 100%;
-    }
-
-    #meals {
-        padding: 20px 20px;
-    }
-
-    #meals .meal {
-        width: 100%;
-    }
-}
 
 .welcome-container{
     position: relative;
@@ -452,4 +272,42 @@ button {
     position: absolute;
     right: 80px;
     top: 40%;
+}
+
+.search{
+    align-content: center;
+    width: 200px;
+    padding-left: 50%;
+    font-weight: 600;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url(	https://www.w3schools.com/css/searchicon.png);
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    transition: width 0.4s ease-in-out;
+}
+.search:focus{
+    width: 1000px;
+}
+.searchbtn{
+    width: 120px;
+    height: 30px;
+    font-size: 16px;
+    align-content: center;
+    border: none;
+    font-weight: 600;
+    border-radius: 12px;
+    border: 2px solid #4e4e4e;
+}
+
+.search-container{
+    padding-left: 20%;
+}
+
+.search-container2{
+    padding-left: 33%;
 }

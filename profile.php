@@ -122,3 +122,6 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] != $auth) {
     </script>
 </body>
 </html>
+<?php
+    include 'footer.php' ;
+?>

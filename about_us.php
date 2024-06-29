@@ -59,7 +59,7 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] != $auth) {
 
         <p>"Empower you to thrive," sums up the path to vitality and self-improvement and aligns with the main goal of your project. It acts as a guiding light, inspiring people to welcome change and pursue personal development. The tagline encourages confidence and tenacity in achieving a better lifestyle by emphasizing empowerment and the possibility of flourishing. It conveys the idea that everyone is capable of changing their lives and realizing their goals. Essentially, our tagline will inspire people to take action toward their well-being and fulfillment by embodying the spirit of empowerment and resilience.</p>
         
-        
+        <p>If you have any doubts and questions or you want to give us any feedback, than feel free contact us.</p>
     </div>
     </section>
 

@@ -37,6 +37,9 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] != $auth) {
             <li><a href="login.php"><i class="bi bi-door-closed"></i>Log Out</a></li>
         </ul>
     </div>
+    <div id="small">
+        <i id="ham" class="bi bi-list"></i>
+    </div>
     
 </section>
     <div class="welcome-container">

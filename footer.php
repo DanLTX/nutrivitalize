@@ -24,7 +24,7 @@
 </div>
 
 <div class="row">
-NutriVitalize : Health Hub Copyright © 2020 NutriVitalize - All rights reserved 
+NutriVitalize : Health Hub Copyright © 2024 NutriVitalize - All rights reserved 
 </div>
 </div>
 </footer>
