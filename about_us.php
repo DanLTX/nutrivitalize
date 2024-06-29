@@ -52,88 +52,116 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] != $auth) {
     </section>
 
     <section id="top">
+        <h1>Nutrivitalize: Health Hub</h1>
+        
+        <p>Our company was created in late 2020 and was named “NutriVitalize : Health Hub”. The name encapsulates the essence of a nutritional and diet-based website. The name NutriVitalize is a combination of two words: “Nutri” which is related to nutrition, and “Vitalize” which is related to vitality or energy. By putting both together, we achieve the name that implies a focus on nourishment and wellness to promote overall health and energy levels. Health Hub is where everything related to nutrition can be found in one place on our website.</p><br>
 
-        <h1>Contact Us</h1>
-
-        <h3>Hello there! May I help you ?</h3>
-        <h3></h3>
+        <p>"Empower you to thrive," sums up the path to vitality and self-improvement and aligns with the main goal of your project. It acts as a guiding light, inspiring people to welcome change and pursue personal development. The tagline encourages confidence and tenacity in achieving a better lifestyle by emphasizing empowerment and the possibility of flourishing. It conveys the idea that everyone is capable of changing their lives and realizing their goals. Essentially, our tagline will inspire people to take action toward their well-being and fulfillment by embodying the spirit of empowerment and resilience.</p>
+        
         <p>If you have any doubts and questions or you want to give us any feedback, than feel free contact us.</p>
 
     </section>
 
     <section id="middle">
-        <h1>Our Team</h1>
-        <div class="member-card">
-            <div class="member">
-                <img src="image/contact/img1.jpg" alt="img1">
-
-                <h2>Rahul Garg</h2>
-
-                <div class="icon">
-                    <a href="mailto:rahulgarg3809@gmail.com" target="_blank"><img src="image/contact/gmail.svg"
-                            alt="rahulgarg3809@gmail.com" style="width:24px;height:24px;"></a>
-
-                    <a href="https://wa.me/9041339018" target="_blank"><img src="image/contact/whatsapp.svg"
-                            alt="9041339018" style="width:24px;height:24px;"></a>
-
-                    <a href="https://www.linkedin.com/in/rahul-garg3809/"
-                        target="_blank"><img src="image/contact/linkedin.svg"
-                            alt="https://www.linkedin.com/in/rahul-garg3809/"
-                            style="width:24px;height:24px;"></a>
-                    <a href="https://github.com/rahul-gargcoder" target="_blank"><img src="image/contact/github.svg"
-                            alt="https://github.com/rahul-gargcoder" style="width:24px;height:24px;"></a>
-                </div>
+    <h1>Our Team</h1>
+    <div class="member-card">
+        <!-- Team Leader -->
+        <div class="member">
+            <img src="Hafiz.png" alt="MUHAMMAD HAFIZ DANIAL BIN ZAIDI">
+            <h2>MUHAMMAD HAFIZ DANIAL BIN ZAIDI</h2>
+            <p><Strong style="font-size:25px;">Project Manager</strong></p>
+            <p><strong>Student Number:</strong> 2022481694</p>
+            <p><strong>Program Code and Name:</strong> CS110 - Computer Science</p>
+            <p><strong>Group/Class:</strong> JCDCS1104G</p>
+            <div class="icon">
+                <a href="mailto:daniallhafizz@gmail.com" target="_blank">
+                    <i class="bi bi-envelope" style="font-size:50px;width:24px;"></i>
+                </a>
+                <a href="https://Wa.me/60199975463" target="_blank">
+                    <i class="bi bi-whatsapp" style="font-size:50px;"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/muhammad-hafiz-danial-zaidi-4712222a8/" target="_blank">
+                    <i class="bi bi-linkedin" style="font-size:50px;"></i>
+                </a>
+                <a href="https://github.com/DanLTX" target="_blank">
+                    <i class="bi bi-github" style="font-size:50px;"></i>
+                </a>
             </div>
-
-
-            <div class="member">
-                <img src="image/contact/img2.png" alt="img2">
-
-                <h2>Yash Srivastava</h2>
-
-                <div class="icon">
-                    <a href="mailto:yashsrivastava123.ys@gmail.com" target="_blank"><img src="image/contact/gmail.svg"
-                            alt="pushpendrasahu1122@gmail.com" style="width:24px;height:24px;"></a>
-
-                    <a href="https://wa.me/919264954799" target="_blank"><img src="image/contact/whatsapp.svg"
-                            alt="9264954799" style="width:24px;height:24px;"></a>
-
-                    <a href="https://www.linkedin.com/in/yash-srivastava-8b6ab31a7/" target="_blank"><img
-                            src="image/contact/linkedin.svg"
-                            alt="https://www.linkedin.com/in/yash-srivastava-8b6ab31a7/"
-                            style="width:24px;height:24px;"></a>
-                    <a href="https://github.com/yash9264" target="_blank"><img src="image/contact/github.svg"
-                            alt="https://github.com/yash9264" style="width:24px;height:24px;"></a>
-                </div>
-
-
-            </div>
-
-
-            <div class="member">
-                <img src="image/contact/img3.jpg" alt="img3">
-
-                <h2>Pushpendra Sahu</h2>
-
-                <div class="icon">
-                    <a href="mailto:pushpendrasahu1122@gmail.com" target="_blank"><img src="image/contact/gmail.svg"
-                            alt="pushpendrasahu1122@gmail.com" style="width:24px;height:24px;"></a>
-
-                    <a href="https://wa.me/917909519551" target="_blank"><img src="image/contact/whatsapp.svg"
-                            alt="7909519551" style="width:24px;height:24px;"></a>
-
-                    <a href="https://www.linkedin.com/in/-pushpendra-sahu/"
-                        target="_blank"><img src="image/contact/linkedin.svg"
-                            alt="https://www.linkedin.com/in/-pushpendra-sahu/"
-                            style="width:24px;height:24px;"></a>
-                    <a href="https://github.com/pushpendrasahu11" target="_blank"><img src="image/contact/github.svg"
-                            alt="https://github.com/pushpendrasahu11" style="width:24px;height:24px;"></a>
-                </div>
-
-            </div>
-
         </div>
-    </section>
+
+        <!-- Database Designer -->
+        <div class="member">
+            <img src="Meor.png" alt="MEOR AFIF DINIE BIN MEOR MUHAMMAD AZMI">
+            <h2>MEOR AFIF DINIE BIN MEOR MUHAMMAD AZMI</h2>
+            <p><Strong style="font-size:25px;">Database Designer</strong></p>
+            <p><strong>Student Number:</strong> 2022895442</p>
+            <p><strong>Program Code and Name:</strong> CS110 - Computer Science</p>
+            <p><strong>Group/Class:</strong> JCDCS1104G</p>
+            <div class="icon">
+                <a href="mailto:meorafif04@gmail.com" target="_blank">
+                    <i class="bi bi-envelope" style="font-size:50px;"></i>
+                </a>
+                <a href="http://Wa.me/601154130454" target="_blank">
+                    <i class="bi bi-whatsapp" style="font-size:50px;"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/meorafif/" target="_blank">
+                    <i class="bi bi-linkedin" style="font-size:50px;"></i>
+                </a>
+                <a href="https://github.com/MADlody" target="_blank">
+                    <i class="bi bi-github" style="font-size:50px;"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Programmer 1 -->
+        <div class="member">
+            <img src="Naqeeb.png" alt="MIQHAEL NAQEEB BIN LEMAN">
+            <h2>MIQHAEL NAQEEB BIN LEMAN</h2>
+            <p><Strong style="font-size:25px;">Programmer 1</strong></p>
+            <p><strong>Student Number:</strong> 2022660938</p>
+            <p><strong>Program Code and Name:</strong> CS110 - Computer Science</p>
+            <p><strong>Group/Class:</strong> JCDCS1104G</p>
+            <div class="icon">
+                <a href="mailto:nmiqhael@gmail.com" target="_blank">
+                    <i class="bi bi-envelope" style="font-size:50px;"></i>
+                </a>
+                <a href="https://wa.me/601132078747" target="_blank">
+                    <i class="bi bi-whatsapp" style="font-size:50px;"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/miqhael-naqeeb-2ba6772a8/" target="_blank">
+                    <i class="bi bi-linkedin" style="font-size:50px;"></i>
+                </a>
+                <a href="https://github.com/Ryhito" target="_blank">
+                    <i class="bi bi-github" style="font-size:50px;"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Programmer 2 -->
+        <div class="member">
+            <img src="Han.png" alt="MOHAMAD HARITH NAZRIN BIN MOHD NAZRI">
+            <h2>MOHAMAD HARITH NAZRIN BIN MOHD NAZRI</h2>
+            <p><Strong style="font-size:25px;">Programmer 2</strong></p>
+            <p><strong>Student Number:</strong> 2022466848</p>
+            <p><strong>Program Code and Name:</strong> CS110 - Computer Science</p>
+            <p><strong>Group/Class:</strong> JCDCS1104G</p>
+            <div class="icon">
+                <a href="mailto:harithjr1710@gmail.com" target="_blank">
+                    <i class="bi bi-envelope" style="font-size:50px;"></i>
+                </a>
+                <a href="http://Wa.me/60127837005" target="_blank">
+                    <i class="bi bi-whatsapp" style="font-size:50px;"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/rohit-verma/" target="_blank">
+                    <i class="bi bi-linkedin" style="font-size:50px;"></i>
+                </a>
+                <a href="https://github.com/hnharithnazrin" target="_blank">
+                    <i class="bi bi-github" style="font-size:50px;"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
 
 
 
