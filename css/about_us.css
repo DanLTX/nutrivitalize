@@ -98,7 +98,7 @@ button:hover{
     background: brightness(55%);
     background-image: url("aboutus.png");
     background-repeat: no-repeat;
-    background-size:contain ;
+    background-size:cover ;
     height: 120vh;
     width: 100%;
     background-position: center;
