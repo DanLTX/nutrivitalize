@@ -20,13 +20,13 @@ else if(isset($_POST['submitLog'])){
         header("Location: home.php");
     }  
     else{  
-        $sqlLog2 = "select * from admin where emailID = '$email' and pass_word = '$password'";   
+        $sqlLog2 = "select * from admin where emailID = '$email' and pass_word = '$password'";  
         $result = mysqli_query($conn, $sqlLog2);  
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
         $count = mysqli_num_rows($result);
         if($count == 1){
             header("Location: adminhome.php");
-        }
+        }  
     }
     $_SESSION["email"] = $email;
 }
@@ -102,7 +102,10 @@ else if(isset($_POST['submitLog'])){
                         </div>
                         <div class="input">
                             <i class="bi bi-lock"></i>
-                            <input type="password" placeholder="Enter your password" name="passwordLog" id="passwordLog" required>
+                            <input type="password" placeholder="Enter your password" name="passwordLog" id="passwordLog" required >
+                            <div class="password-cointaner">
+                            <i class="bi bi-eye-slash password-toggle" id="togglePassword"></i>
+                            </div>
                         </div>
                         <div class="submitbtn">
                             <button name="submitLog">submit</button>
@@ -187,6 +190,14 @@ else if(isset($_POST['submitLog'])){
 
         password.onchange = validatePassword;
         confirm_password.onkeyup = validatePassword;
+
+        document.getElementById('togglePassword').addEventListener('click', function () {
+        var passwordField = document.getElementById('passwordLog');
+        var type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordField.setAttribute('type', type);
+        this.classList.toggle('bi-eye');
+        this.classList.toggle('bi-eye-slash');
+        });
 
     </script>
     

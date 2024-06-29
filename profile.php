@@ -1,21 +1,5 @@
 <?php
-include 'conn.php';
 session_start();
-$email = $_SESSION["email"];
-$sqlauth = "SELECT * FROM user where email = '$email' ";
-$result = mysqli_query($conn, $sqlauth);
-if (mysqli_num_rows($result) == 1) {
-    // output data of each row
-    while($row = mysqli_fetch_assoc($result)) {
-        $auth = $row["email"];
-    }
-}
-if (!isset($_SESSION['email']) || $_SESSION['email'] != $auth) {
-    header('Location: login.php');
-    session_destroy();
-    exit();
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,6 +10,63 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] != $auth) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/profile.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+        }
+        #header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: white;
+            color: white;
+        }
+        #header a {
+            color: white;
+            text-decoration: none;
+        }
+        #navbar {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        #navbar li {
+            display: inline;
+        }
+        .acc-container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .acc-container h3 {
+            margin-bottom: 20px;
+        }
+        .acc-container .detail {
+            padding: 10px 0;
+        }
+        .updatebtn, .logoutbtn {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 0;
+        }
+        .logoutbtn {
+            background-color: #dc3545;
+        }
+        .updatebtn:hover, .logoutbtn:hover {
+            opacity: 0.8;
+        }
+    </style>
 
 </head>
 <body>
@@ -39,8 +80,6 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] != $auth) {
                 <li><a href="bmi.php">BMI Tracker</a></li>
                 <?php
 
-                
-                
                 echo "<li><a href=\"profile.php\"><i class='bi bi-person-fill'></i>$_SESSION[username]</a></li>";
                 ?>
                 <a href="#" id="close"><i class="bi bi-x-circle"></i></a>
@@ -53,20 +92,27 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] != $auth) {
     <div class="acc-container">
         <h3>Account Details</h3>
         <br>
-        <?php
-        echo "Email : " . $_SESSION["email"] . "<br>";
-        echo "Username : " . $_SESSION["username"] . "<br>";
-        echo "Password : " . $_SESSION["password"] . "<br>";
-        echo "Age: " . $_SESSION["age"] . "<br>";
-        echo "Gender : " . $_SESSION["gender"] . "<br>";
-        echo "Height : " . $_SESSION["height"] . "cm" . "<br>";
-        echo "Weight : " . $_SESSION["weight"] . "kg";
-        
-        ?>
+        <div class="detail"><strong>Email:</strong> <?php echo $_SESSION["email"]; ?></div>
+        <div class="detail"><strong>Username:</strong> <?php echo $_SESSION["username"]; ?></div>
+        <div class="detail"><strong>Password:</strong> ******</div>
+        <div class="detail"><strong>Age:</strong> <?php echo $_SESSION["age"]; ?></div>
+        <div class="detail"><strong>Gender:</strong> <?php echo $_SESSION["gender"]; ?></div>
+        <div class="detail"><strong>Height:</strong> <?php echo $_SESSION["height"]; ?> cm</div>
+        <div class="detail"><strong>Weight:</strong> <?php echo $_SESSION["weight"]; ?> kg</div>
         <br>
         <br>
         <a href="update.php"><button class="updatebtn">UPDATE</button></a>
         <a href="logout.php"><button class="logoutbtn">LOG OUT</button></a>
     </div>
+    <script>
+        document.getElementById('ham').onclick = function() {
+        var navbar = document.getElementById('navbar');
+        if (navbar.style.display === 'block') {
+            navbar.style.display = 'none';
+        } else {
+            navbar.style.display = 'block';
+        }
+    };
+    </script>
 </body>
 </html>
