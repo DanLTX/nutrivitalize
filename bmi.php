@@ -82,9 +82,9 @@ $dataPoints = array(
         
     </section>
     <?php
-    $bgColor = ($bmi < 18.5 || ($bmi > 25 && $bmi <= 30)) ? 'background-image: linear-gradient(to right, yellow, gold);' : '';
+    $bgColor = ($bmi < 18.5 || ($bmi > 25 && $bmi <= 30)) ? 'background-image: linear-gradient(to right, rgb(187, 143, 24), rgb(220, 60, 20));' : '';
 $bgColor = ($bmi > 30) ? 'background-image: linear-gradient(to right, red, crimson);' : $bgColor;
-    $textShadow = ($bmi < 18.5 || ($bmi > 25 && $bmi <= 30)) ? 'yellow' : (($bmi > 30) ? 'red' : 'lightgreen');
+    $textShadow = ($bmi < 18.5 || ($bmi > 25 && $bmi <= 30)) ? 'rgb(187, 143, 24)' : (($bmi > 30) ? 'red' : 'lightgreen');
 
     echo "<div class=\"updatebar\" style=\"$bgColor\">
         <h1>Update height and weight on</h1>
