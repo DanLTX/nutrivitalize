@@ -94,24 +94,25 @@ button:hover{
 }
 
 #top{
-    background-image: url(image/contact/contactus.svg);
+    filter: brightness(75%);
+    background-image: url("aboutus.png");
     background-repeat: no-repeat;
     background-size:contain ;
-    height: 80vh;
+    height: 120vh;
     width: 100%;
     background-position: center;
     padding: 4% 6%;
     /* vertical and horizontal */
     display: flex;
     flex-direction: column;
-    align-items:center;
+    
     transition: all 0.5s ease;
 
 }
 #top h1{
-    font-family: 'Oleo Script Swash Caps';
+    font-family: 'Georgia';
     font-size: 5rem;
-    color: rgb(63, 16, 204);
+    color: rgb(255, 255, 255);
 }
 
 #top h3{
@@ -122,7 +123,10 @@ button:hover{
 #top p{
     padding-top: 1%;
     font-weight: 800;
-    width:318px;
+    width:650px;
+    color: rgb(255, 255, 255);
+    line-height: 2.0;
+    font-size: large;
     
 }
 
@@ -130,7 +134,7 @@ button:hover{
     text-align: center;
     /* border: 2px solid red; */
     padding: 10px 10px;
-    background: #dbe3fe;
+    background: #D2B48C;
 }
 
 #middle .member-card{
@@ -153,23 +157,24 @@ button:hover{
     margin: 10px 0;
     transition: 0.6s ease;
     overflow: hidden;
-    /* jo bahar ja raha hai wo hide ho jayega */
+    
 }
 
 #middle .member:hover{
-    height: 280px;
+    height: 500px;
     transform: translateY(-80px);
 }
 
 #middle .member img{
-    height: 200px;
+    height: 220px;
+    border: 2px;
 
 }
 
 #middle .member .icon{
 display: flex;
    align-items: center;
-   margin: 10px;
+   margin: 20px;
    cursor: pointer;
    justify-content: space-around;
    transition: 0.4s ease-in-out;
