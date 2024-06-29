@@ -81,13 +81,19 @@ $dataPoints = array(
         </div>
         
     </section>
-    <div class="updatebar">
+    <?php
+    $bgColor = ($bmi < 18.5 || ($bmi > 25 && $bmi <= 30)) ? 'background-image: linear-gradient(to right, yellow, gold);' : '';
+$bgColor = ($bmi > 30) ? 'background-image: linear-gradient(to right, red, crimson);' : $bgColor;
+    $textShadow = ($bmi < 18.5 || ($bmi > 25 && $bmi <= 30)) ? 'yellow' : (($bmi > 30) ? 'red' : 'lightgreen');
+
+    echo "<div class=\"updatebar\" style=\"$bgColor\">
         <h1>Update height and weight on</h1>
         <h1>profile for your monthly BMI</h1>
-        <div class="arrowbtn">
-        <a href="update.php"><button class="arrow"><i class="bi bi-arrow-right"></i></button></a>
+        <div class=\"arrowbtn\">
+            <a href=\"update.php\"><button class=\"arrow\"><i class=\"bi bi-arrow-right\"></i></button></a>
         </div>
-    </div>
+    </div>";
+    ?>
     
 
     <script>
@@ -117,11 +123,11 @@ $dataPoints = array(
     $height = $_SESSION['height'] / 100;
     $weight = $_SESSION['weight'];
     $bmi = round($weight  / pow($height,2),1);
-    echo "<h1 class=\"bmi\">BMI = $bmi</h1>";
-    
+   echo "<h1 class=\"bmi\" style=\"text-shadow: -1px 5px 15px $textShadow, 1px 5px 15px $textShadow, 1px -5px 15px $textShadow, -1px -5px 15px $textShadow;\">BMI = $bmi</h1>";
+
     ?>
 
-    <div class="updatebar">
+    <div <?php echo "class=\"updatebar\" style=\"$bgColor\"";?>>
     <?php
     // Assuming you already have the $bmi variable and $conn connection established
     if ($bmi > 30) {

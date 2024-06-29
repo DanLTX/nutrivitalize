@@ -92,13 +92,54 @@ $conn->close();
             echo "<img src=\"{$row['foodImage']}\" width=\"90\" height=\"auto\">";
             echo "<h5>{$row['foodName']}</h5>";
             echo "<h6>Calorie: {$row['foodCalories']} kcal</h6>";
+            echo "<div class=\"quantity\">";
+            echo "<button class=\"plus-btn\" type=\"button\" name=\"button\">";
+            echo "<img src=\"https://cdn-icons-png.freepik.com/512/32/32339.png\" alt=\"\" />";
+            echo "</button>";
+            echo "<input class=\"quantity\" type=\"text\" name=\"name\" value=\"0\">";
+            echo "<button class=\"minus-btn\" type=\"button\" name=\"button\">";
+            echo "<img src=\"https://cdn-icons-png.flaticon.com/512/25/25232.png\" alt=\"\" />";
+            echo "</button>";
             echo "</div>";
+            echo "</div>";
+            
         }
         ?>
         </div>
     </div>
     
     <script>
+        $('.minus-btn').on('click', function(e) {
+    e.preventDefault();
+    var $this = $(this);
+    var $input = $this.closest('div').find('input');
+    var value = parseInt($input.val());
+ 
+    if (value > 1) {
+        value = value - 1;
+    } else {
+        value = 0;
+    }
+ 
+    $input.val(value);
+});
+ 
+$('plus-btn').on('click', function(e) {
+    e.preventDefault();
+    var $this = $(this);
+    var $input = $this.closest('div').find('input');
+    var value = parseInt($input.val());
+ 
+    if (value < 100) {
+        value = value + 1;
+    } else {
+        value = 100;
+    }
+ 
+    $input.val(value);
+});
+
+
         document.getElementById('searchfood').addEventListener('input', function() {
             const searchValue = this.value.toLowerCase();
             const foodItems = document.querySelectorAll('.food-grid');
@@ -112,6 +153,8 @@ $conn->close();
                 }
             });
         });
+        
     </script>
+    
 </body>
 </html>

@@ -9,7 +9,13 @@
     font-size: large;
 }
 
+.updatebar.red {
+            background-image: linear-gradient(to right, red, crimson);
+        }
 
+.updatebar.yellow {
+            background-image: linear-gradient(to right, rgb(218, 165, 20), rgb(220, 60, 20));
+        }
 
 .arrow{
     text-align: end;
@@ -32,3 +38,18 @@
                 -1px -5px 15px lightgreen;
 }
 
+.bmi.red{
+text-shadow: -1px 5px 15px rgb(235, 87, 87),
+                1px 5px 15px rgb(235, 87, 87),
+                1px -5px 15px rgb(235, 87, 87),
+                -1px -5px 15px rgb(235, 87, 87);
+
+}
+
+.bmi.yellow{
+text-shadow: -1px 5px 15px rgb(235, 188, 87),
+                1px 5px 15px rgb(235, 188, 87),
+                1px -5px 15px rgb(235, 188, 87),
+                -1px -5px 15px rgb(235, 188, 87);
+
+}

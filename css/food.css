@@ -117,3 +117,41 @@ button:hover {
     top: 5px;
     visibility: hidden;
 }
+
+.plus-btn {
+  max-height: 10px;
+  max-width: 10px;
+}
+
+.plus-btn img {
+  max-height: 10px;
+  max-width: 10px;
+}
+
+.minus-btn {
+  max-height: 10px;
+  max-width: 10px;
+}
+
+.minus-btn img {
+  max-height: 10px;
+  max-width: 10px;
+}
+
+.buttons {
+  position: relative;
+  padding-top: 30px;
+  margin-right: 60px;
+}
+
+.quantity input{
+    border: 2px solid #ccc;
+  text-align: center;
+  width: 32px;
+  font-size: 16px;
+  color: #43484D;
+  font-weight: 300;
+   margin-left: 15px;
+}
+
+   

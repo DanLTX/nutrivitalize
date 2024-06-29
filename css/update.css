@@ -2,18 +2,7 @@
             font-family: Arial, sans-serif;
             background-color: #f0f8ff;
         }
-        #header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            background-color: white;
-            color: white;
-        }
-        #header a {
-            color: white;
-            text-decoration: none;
-        }
+        
         #navbar {
             list-style: none;
             display: flex;

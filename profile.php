@@ -1,5 +1,21 @@
 <?php
+include 'conn.php';
 session_start();
+$email = $_SESSION["email"];
+$sqlauth = "SELECT * FROM user where email = '$email' ";
+$result = mysqli_query($conn, $sqlauth);
+if (mysqli_num_rows($result) == 1) {
+    // output data of each row
+    while($row = mysqli_fetch_assoc($result)) {
+        $auth = $row["email"];
+    }
+}
+if (!isset($_SESSION['email']) || $_SESSION['email'] != $auth) {
+    header('Location: login.php');
+    session_destroy();
+    exit();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,18 +31,7 @@ session_start();
             font-family: Arial, sans-serif;
             background-color: #f0f8ff;
         }
-        #header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            background-color: white;
-            color: white;
-        }
-        #header a {
-            color: white;
-            text-decoration: none;
-        }
+        
         #navbar {
             list-style: none;
             display: flex;
@@ -67,7 +72,6 @@ session_start();
             opacity: 0.8;
         }
     </style>
-
 </head>
 <body>
 <section class="profile" id="header">
@@ -80,6 +84,8 @@ session_start();
                 <li><a href="bmi.php">BMI Tracker</a></li>
                 <?php
 
+                
+                
                 echo "<li><a href=\"profile.php\"><i class='bi bi-person-fill'></i>$_SESSION[username]</a></li>";
                 ?>
                 <a href="#" id="close"><i class="bi bi-x-circle"></i></a>
