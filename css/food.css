@@ -118,40 +118,46 @@ button:hover {
     visibility: hidden;
 }
 
-.plus-btn {
-  max-height: 10px;
-  max-width: 10px;
+.wrapper{
+  height: 50px;
+  min-width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFF;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+  margin-top: 10px;
+  margin-left: 10px;
 }
-
-.plus-btn img {
-  max-height: 10px;
-  max-width: 10px;
-}
-
-.minus-btn {
-  max-height: 10px;
-  max-width: 10px;
-}
-
-.minus-btn img {
-  max-height: 10px;
-  max-width: 10px;
-}
-
-.buttons {
-  position: relative;
-  padding-top: 30px;
-  margin-right: 60px;
-}
-
-.quantity input{
-    border: 2px solid #ccc;
+.wrapper span{
+  width: 100%;
   text-align: center;
-  width: 32px;
-  font-size: 16px;
-  color: #43484D;
-  font-weight: 300;
-   margin-left: 15px;
+  font-size: 32px;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+}
+.wrapper span.num{
+  font-size: 32px;
+  border-right: 2px solid rgba(0,0,0,0.2);
+  border-left: 2px solid rgba(0,0,0,0.2);
+  pointer-events: none;
 }
 
-   
+#total-bar{
+    z-index: 10000;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #e3e3e3;
+    box-shadow: 0 5px 15px rgb(0,0,0,0.6);
+    margin-top: 44%;
+    margin-left: 80%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 76px;
+}

@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Arvo&family=Montserrat&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Oleo+Script+Swash+Caps&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Stoke:wght@300&display=swap');
 
 *{
     margin: 0;
@@ -94,7 +95,7 @@ button:hover{
 }
 
 #top{
-    filter: brightness(75%);
+    background: brightness(55%);
     background-image: url("aboutus.png");
     background-repeat: no-repeat;
     background-size:contain ;
@@ -110,7 +111,7 @@ button:hover{
 
 }
 #top h1{
-    font-family: 'Georgia';
+    font-family: 'Montserrat';
     font-size: 5rem;
     color: rgb(255, 255, 255);
 }

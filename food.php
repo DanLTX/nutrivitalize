@@ -5,7 +5,6 @@ $email = $_SESSION["email"];
 $sqlauth = "SELECT * FROM user where email = '$email' ";
 $result = mysqli_query($conn, $sqlauth);
 if (mysqli_num_rows($result) == 1) {
-    // output data of each row
     while($row = mysqli_fetch_assoc($result)) {
         $auth = $row["email"];
     }
@@ -41,7 +40,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Food Calorie Checker</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/food.css">
@@ -88,73 +87,65 @@ $conn->close();
         <div class="food-container" id="food-container">
         <?php
         while ($row = $foodResult->fetch_assoc()) {
-            echo "<div class=\"food-grid\" data-food-name=\"{$row['foodName']}\">";
+            echo "<div class=\"food-grid\" data-food-name=\"{$row['foodName']}\" data-calories=\"{$row['foodCalories']}\">";
             echo "<img src=\"{$row['foodImage']}\" width=\"90\" height=\"auto\">";
             echo "<h5>{$row['foodName']}</h5>";
             echo "<h6>Calorie: {$row['foodCalories']} kcal</h6>";
-            echo "<div class=\"quantity\">";
-            echo "<button class=\"plus-btn\" type=\"button\" name=\"button\">";
-            echo "<img src=\"https://cdn-icons-png.freepik.com/512/32/32339.png\" alt=\"\" />";
-            echo "</button>";
-            echo "<input class=\"quantity\" type=\"text\" name=\"name\" value=\"0\">";
-            echo "<button class=\"minus-btn\" type=\"button\" name=\"button\">";
-            echo "<img src=\"https://cdn-icons-png.flaticon.com/512/25/25232.png\" alt=\"\" />";
-            echo "</button>";
+            echo "<div class=\"wrapper\">";
+            echo "<span class=\"minus\">-</span>";
+            echo "<span class=\"num\">00</span>";
+            echo "<span class=\"plus\">+</span>";
             echo "</div>";
             echo "</div>";
-            
         }
         ?>
         </div>
     </div>
-    
+    <section id="total-bar">
+        <div>
+            <ul id="totalbar"> 
+                <h1>Total Calories: <span id="totalCalories">0</span> kcal</h1>
+            </ul>
+        </div>
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
-        $('.minus-btn').on('click', function(e) {
-    e.preventDefault();
-    var $this = $(this);
-    var $input = $this.closest('div').find('input');
-    var value = parseInt($input.val());
- 
-    if (value > 1) {
-        value = value - 1;
-    } else {
-        value = 0;
-    }
- 
-    $input.val(value);
-});
- 
-$('plus-btn').on('click', function(e) {
-    e.preventDefault();
-    var $this = $(this);
-    var $input = $this.closest('div').find('input');
-    var value = parseInt($input.val());
- 
-    if (value < 100) {
-        value = value + 1;
-    } else {
-        value = 100;
-    }
- 
-    $input.val(value);
-});
+        $(document).ready(function() {
+            function updateTotalCalories() {
+                let totalCalories = 0;
+                $('.food-grid').each(function() {
+                    const calories = $(this).data('calories');
+                    const quantity = parseInt($(this).find('.num').text());
+                    totalCalories += calories * quantity;
+                });
+                $('#totalCalories').text(totalCalories);
+            }
 
+            $('.plus').on('click', function() {
+                const $num = $(this).siblings('.num');
+                let currentValue = parseInt($num.text());
+                currentValue++;
+                $num.text(currentValue < 10 ? '0' + currentValue : currentValue);
+                updateTotalCalories();
+            });
 
-        document.getElementById('searchfood').addEventListener('input', function() {
-            const searchValue = this.value.toLowerCase();
-            const foodItems = document.querySelectorAll('.food-grid');
-
-            foodItems.forEach(function(item) {
-                const foodName = item.getAttribute('data-food-name').toLowerCase();
-                if (foodName.includes(searchValue)) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
+            $('.minus').on('click', function() {
+                const $num = $(this).siblings('.num');
+                let currentValue = parseInt($num.text());
+                if (currentValue > 0) {
+                    currentValue--;
+                    $num.text(currentValue < 10 ? '0' + currentValue : currentValue);
+                    updateTotalCalories();
                 }
             });
+
+            $('#searchfood').on('input', function() {
+                const value = $(this).val().toLowerCase();
+                $('#food-container .food-grid').filter(function() {
+                    $(this).toggle($(this).data('food-name').toLowerCase().indexOf(value) > -1);
+                });
+            });
         });
-        
     </script>
-    
 </body>
 </html>

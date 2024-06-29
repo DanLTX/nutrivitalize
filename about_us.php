@@ -52,6 +52,7 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] != $auth) {
     </section>
 
     <section id="top">
+    <div class="top-para">
         <h1>Nutrivitalize: Health Hub</h1>
         
         <p>Our company was created in late 2020 and was named “NutriVitalize : Health Hub”. The name encapsulates the essence of a nutritional and diet-based website. The name NutriVitalize is a combination of two words: “Nutri” which is related to nutrition, and “Vitalize” which is related to vitality or energy. By putting both together, we achieve the name that implies a focus on nourishment and wellness to promote overall health and energy levels. Health Hub is where everything related to nutrition can be found in one place on our website.</p><br>
@@ -59,7 +60,7 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] != $auth) {
         <p>"Empower you to thrive," sums up the path to vitality and self-improvement and aligns with the main goal of your project. It acts as a guiding light, inspiring people to welcome change and pursue personal development. The tagline encourages confidence and tenacity in achieving a better lifestyle by emphasizing empowerment and the possibility of flourishing. It conveys the idea that everyone is capable of changing their lives and realizing their goals. Essentially, our tagline will inspire people to take action toward their well-being and fulfillment by embodying the spirit of empowerment and resilience.</p>
         
         <p>If you have any doubts and questions or you want to give us any feedback, than feel free contact us.</p>
-
+    </div>
     </section>
 
     <section id="middle">

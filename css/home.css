@@ -453,3 +453,41 @@ button {
     right: 80px;
     top: 40%;
 }
+
+.search{
+    align-content: center;
+    width: 200px;
+    padding-left: 50%;
+    font-weight: 600;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url(	https://www.w3schools.com/css/searchicon.png);
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    transition: width 0.4s ease-in-out;
+}
+.search:focus{
+    width: 1000px;
+}
+.searchbtn{
+    width: 120px;
+    height: 30px;
+    font-size: 16px;
+    align-content: center;
+    border: none;
+    font-weight: 600;
+    border-radius: 12px;
+    border: 2px solid #4e4e4e;
+}
+
+.search-container{
+    padding-left: 20%;
+}
+
+.search-container2{
+    padding-left: 33%;
+}
