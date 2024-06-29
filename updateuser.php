@@ -33,7 +33,7 @@ if (mysqli_num_rows($result) == 1) {
 }
 
 if(isset($_POST['updatebtn'])){
-    $email = $_POST["useremail"];
+    $email = $_SESSION["useremail"];
     $username = $_POST["username"];
     $password = $_POST["password"];
     $age = $_POST["age"];
@@ -42,7 +42,7 @@ if(isset($_POST['updatebtn'])){
     $weight = $_POST["weight"];
 
 
-    $update = "update user set username='$username',pass_word='$password',age='$age', gender='$gender', height='$height', weight='$weight' where email like '%$email'";
+    $update = "update user set username='$username',pass_word='$password',age='$age', gender='$gender', height='$height', weight='$weight' where email = '$email'";
     $sql2=mysqli_query($conn,$update);
     if($sql2){
         header("location: adminuser.php");

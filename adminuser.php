@@ -134,7 +134,12 @@ $conn->close();
                 <td><input type="text" name="username"></td>
                 <td><input type="text" name="password"></td>
                 <td><input type="text" name="age"></td>
-                <td><input type="text" name="gender"></td>
+                <td>
+                <select id="gender" name="gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+                </td>
                 <td><input type="text" name="height"></td>
                 <td><input type="text" name="weight"></td>
                 <td><button name="addBtn" style="background-color: lightgreen;">Add</button></td>

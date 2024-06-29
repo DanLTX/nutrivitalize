@@ -100,12 +100,12 @@ if(isset($_POST['updatebtn'])){
                     <input type=\"password\" id=\"password\" name=\"password\" value=\"$_SESSION[password]\" required>
                     <i class=\"bi bi-eye-slash password-toggle\" id=\"togglePassword\"></i>
                 </div>";
-        echo "Age: <input type=\"text\" name=\"age\" value=\"$_SESSION[age]\" required><br><br>";
+        echo "Age: <input type=\"text\" name=\"age\" id='age' value=\"$_SESSION[age]\" required><br><br>";
         echo "Gender: <br>
               <input type=\"radio\" id=\"male\" name=\"gender\" value=\"Male\" " . ($_SESSION['gender'] == 'Male' ? 'checked' : '') . " required><label for=\"male\">Male</label>
               <input type=\"radio\" id=\"female\" name=\"gender\" value=\"Female\" " . ($_SESSION['gender'] == 'Female' ? 'checked' : '') . " required><label for=\"female\">Female</label><br><br>";
-        echo "Height(cm): <input type=\"text\" name=\"height\" value=\"$_SESSION[height]\" required><br>";
-        echo "Weight(kg): <input type=\"text\" name=\"weight\" value=\"$_SESSION[weight]\" required><br>";
+        echo "Height(cm): <input type=\"text\" name=\"height\" id='height' value=\"$_SESSION[height]\" required><br>";
+        echo "Weight(kg): <input type=\"text\" name=\"weight\" id='weight' value=\"$_SESSION[weight]\" required><br>";
         ?>
         <button class="submitbtn" type="submit" name="updatebtn">UPDATE</button>
     </form>
@@ -128,6 +128,41 @@ if(isset($_POST['updatebtn'])){
         this.classList.toggle('bi-eye-slash');
     });
 
+        
+        var age = document.getElementById("age"),
+            weight = document.getElementById("weight"),
+            height = document.getElementById("height");
+
+        //validate age range 13-100
+        function validateAge() {
+            if (age.value < 13 || age.value > 100) {
+                age.setCustomValidity("Age must be between 13 and 100.");
+            } else {
+                age.setCustomValidity('');
+            }
+        }
+
+        //validate weight 1-999
+        function validateWeight() {
+            if (weight.value < 1 || weight.value > 999) {
+                weight.setCustomValidity("Weight must be between 1 and 999 kg.");
+            } else {
+                weight.setCustomValidity('');
+            }
+        }
+
+        //validate height 1-250
+        function validateHeight() {
+            if (height.value < 1 || height.value > 250) {
+                height.setCustomValidity("Height must be between 1 and 250 cm.");
+            } else {
+                height.setCustomValidity('');
+            }
+        }
+
+        age.oninput = validateAge;
+        weight.oninput = validateWeight;
+        height.oninput = validateHeight;
 </script>
 </body>
 </html>
