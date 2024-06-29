@@ -2,11 +2,29 @@
 session_start();
 include 'conn.php';
 if(isset($_POST['submitSign'])){
-    $sql="insert into user (email,username,pass_word,age,gender,height,weight) values
-    ('$_POST[email]','$_POST[username]','$_POST[password]','$_POST[age]','$_POST[gender]','$_POST[height]','$_POST[weight]')";
+    $height = $_POST['height'] / 100;
+    $weight = $_POST['weight'];
+    $bmi = round($weight  / pow($height,2),1);
+    $currentdate = date("Y-m-d");
+    if ($bmi > 30) {
+        $suggestID = 3;
+    } elseif ($bmi > 25 && $bmi <= 30) {
+        $suggestID = 2;
+    } elseif ($bmi >= 18.5 && $bmi <= 24.9) {   
+        $suggestID = 1;
+    } elseif ($bmi < 18.5) {
+        $suggestID = 4;
+    }
+
+    $sql="INSERT INTO user (email, username, pass_word, age, gender, height, weight) VALUES ('$_POST[email]', '$_POST[username]',
+    '$_POST[password]','$_POST[age]','$_POST[gender]','$_POST[height]','$_POST[weight]')";
+    $sql2="INSERT INTO bmi (email, suggestID, date, bmi_value) VALUES ('$_POST[email]','$suggestID','$currentdate','$bmi')";
     if(!mysqli_query($conn, $sql)){
     die('Error:' . mysqli_error($conn));
     }
+    if(!mysqli_query($conn, $sql2)){
+        die('Error:' . mysqli_error($conn));
+        }
 }
 else if(isset($_POST['submitLog'])){
     $email = $_POST['emailLog'];  
@@ -122,7 +140,7 @@ else if(isset($_POST['submitLog'])){
                     <div class="content">
                         <div class="input">
                             <i class="bi bi-envelope"></i>
-                            <input type="text" placeholder="Enter your email" name="email" required>
+                            <input type="text" placeholder="Enter your email" name="email" id="emailSign" required>
                         </div>
                         <div class="input">
                             <i class="bi bi-person"></i>
@@ -138,7 +156,7 @@ else if(isset($_POST['submitLog'])){
                         </div>
                         <div class="input">
                             <i class="bi bi-lock"></i>
-                            <input type="text" placeholder="Enter your age" name="age" required>
+                            <input type="text" placeholder="Enter your age" name="age" id="age" required>
                         </div>
 
                         
@@ -157,11 +175,11 @@ else if(isset($_POST['submitLog'])){
 
                         <div class="input">
                             <i class="bi bi-lock"></i>
-                            <input type="text" placeholder="Enter your height (cm)" name="height" required>
+                            <input type="text" placeholder="Enter your height (cm)" name="height" id="height" required>
                         </div>
                         <div class="input">
                             <i class="bi bi-lock"></i>
-                            <input type="text" placeholder="Enter your weight (kg)" name="weight" required>
+                            <input type="text" placeholder="Enter your weight (kg)" name="weight" id="weight" required>
                         </div>
 
                         <div class="submitbtn">
@@ -176,6 +194,7 @@ else if(isset($_POST['submitLog'])){
         </div>
     </section>
     <script>
+        //validate password
         var password = document.getElementById("password")
         ,confirm_password = document.getElementById("confirm_password");
 
@@ -199,14 +218,57 @@ else if(isset($_POST['submitLog'])){
         this.classList.toggle('bi-eye-slash');
         });
 
+        //validate email
+        var emailSign = document.getElementById("emailSign");
+
+        function validateEmail(emailField) {
+            var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            if (!emailPattern.test(emailField.value)) {
+                emailField.setCustomValidity("Please enter a valid email address.");
+            } else {
+                emailField.setCustomValidity('');
+            }
+        }
+        emailSign.oninput = function() {
+            validateEmail(emailSign);
+        };
+
+        
+        var age = document.getElementById("age"),
+            weight = document.getElementById("weight"),
+            height = document.getElementById("height");
+
+        //validate age range 13-100
+        function validateAge() {
+            if (age.value < 13 || age.value > 100) {
+                age.setCustomValidity("Age must be between 13 and 100.");
+            } else {
+                age.setCustomValidity('');
+            }
+        }
+
+        //validate weight 1-999
+        function validateWeight() {
+            if (weight.value < 1 || weight.value > 999) {
+                weight.setCustomValidity("Weight must be between 1 and 999 kg.");
+            } else {
+                weight.setCustomValidity('');
+            }
+        }
+
+        //validate height 1-250
+        function validateHeight() {
+            if (height.value < 1 || height.value > 250) {
+                height.setCustomValidity("Height must be between 1 and 250 cm.");
+            } else {
+                height.setCustomValidity('');
+            }
+        }
+
+        age.oninput = validateAge;
+        weight.oninput = validateWeight;
+        height.oninput = validateHeight;
     </script>
     
 </body>
 </html>
-
-<?php
-
-
-
-
-?>

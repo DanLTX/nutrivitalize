@@ -22,9 +22,17 @@ $result = $conn->query($sql);
 $suggestTypeSql = "SELECT DISTINCT suggestType FROM suggestion";
 $suggestTypeResult = $conn->query($suggestTypeSql);
 
-$height = $_SESSION['height'] / 100;
-$weight = $_SESSION['weight'];
-$bmi = round($weight  / pow($height,2),1);
+$sql2 = "SELECT bmi_value from bmi where email = '$_SESSION[email]' ORDER BY date ASC";
+    $result2 = mysqli_query($conn, $sql2);
+    if (mysqli_num_rows($result2) > 0) {
+        // output data of each row
+        while($row = mysqli_fetch_assoc($result2)) {
+            $bmi = $row["bmi_value"];
+        }
+    }
+//$height = $_SESSION['height'] / 100;
+//$weight = $_SESSION['weight'];
+//$bmi = round($weight  / pow($height,2),1);
 
 $dataPoints2 = array();
 while($rows=$result->fetch_assoc()){
@@ -32,7 +40,7 @@ while($rows=$result->fetch_assoc()){
     $dataPoints2[] = array("y" => $rows['bmi_value'], "label" => $rows['MONTHNAME(date)']);
         
 }
-$dataPoints2[] =  array("y" => $bmi, "label" => date("F"));
+//$dataPoints2[] =  array("y" => $bmi, "label" => date("F"));
 
 /*
 $dataPoints = array(
@@ -82,9 +90,9 @@ $dataPoints = array(
         
     </section>
     <?php
-    $bgColor = ($bmi < 18.5 || ($bmi > 25 && $bmi <= 30)) ? 'background-image: linear-gradient(to right, rgb(187, 143, 24), rgb(220, 60, 20));' : '';
+    $bgColor = ($bmi < 18.5 || ($bmi > 25 && $bmi <= 30)) ? 'background-image: linear-gradient(to right, yellow, gold);' : '';
 $bgColor = ($bmi > 30) ? 'background-image: linear-gradient(to right, red, crimson);' : $bgColor;
-    $textShadow = ($bmi < 18.5 || ($bmi > 25 && $bmi <= 30)) ? 'rgb(187, 143, 24)' : (($bmi > 30) ? 'red' : 'lightgreen');
+    $textShadow = ($bmi < 18.5 || ($bmi > 25 && $bmi <= 30)) ? 'yellow' : (($bmi > 30) ? 'red' : 'lightgreen');
 
     echo "<div class=\"updatebar\" style=\"$bgColor\">
         <h1>Update height and weight on</h1>
@@ -120,9 +128,18 @@ $bgColor = ($bmi > 30) ? 'background-image: linear-gradient(to right, red, crims
     <div id="chartContainer" style="height: 370px; width: 100%;"></div>
     <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
     <?php
-    $height = $_SESSION['height'] / 100;
-    $weight = $_SESSION['weight'];
-    $bmi = round($weight  / pow($height,2),1);
+    $sql = "SELECT bmi_value from bmi where email = '$_SESSION[email]' ORDER BY date ASC";
+    $result = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($result) > 0) {
+        // output data of each row
+        while($row = mysqli_fetch_assoc($result)) {
+            $bmi = $row["bmi_value"];
+        }
+    } 
+
+    //$height = $_SESSION['height'] / 100;
+    //$weight = $_SESSION['weight'];
+    //$bmi = round($weight  / pow($height,2),1);
    echo "<h1 class=\"bmi\" style=\"text-shadow: -1px 5px 15px $textShadow, 1px 5px 15px $textShadow, 1px -5px 15px $textShadow, -1px -5px 15px $textShadow;\">BMI = $bmi</h1>";
 
     ?>
@@ -136,7 +153,7 @@ $bgColor = ($bmi > 30) ? 'background-image: linear-gradient(to right, red, crims
     } elseif ($bmi > 25 && $bmi <= 30) {
         $suggestType = "Overweight";
         $suggestID = 2;
-    } elseif ($bmi >= 18.5 && $bmi <= 24.9) {
+    } elseif ($bmi >= 18.5 && $bmi <= 25) {
         $suggestType = "Normal";
         $suggestID = 1;
     } elseif ($bmi < 18.5) {
