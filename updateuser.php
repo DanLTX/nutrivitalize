@@ -35,14 +35,13 @@ if (mysqli_num_rows($result) == 1) {
 if(isset($_POST['updatebtn'])){
     $email = $_SESSION["useremail"];
     $username = $_POST["username"];
-    $password = $_POST["password"];
     $age = $_POST["age"];
     $gender = $_POST["gender"];
     $height = $_POST["height"];
     $weight = $_POST["weight"];
 
 
-    $update = "update user set username='$username',pass_word='$password',age='$age', gender='$gender', height='$height', weight='$weight' where email = '$email'";
+    $update = "update user set username='$username',age='$age', gender='$gender', height='$height', weight='$weight' where email = '$email'";
     $sql2=mysqli_query($conn,$update);
     if($sql2){
         header("location: adminuser.php");
@@ -50,6 +49,10 @@ if(isset($_POST['updatebtn'])){
     else{
         echo "ERROR!!! YOUR USER IS NOT UPDATING";
     }
+}
+
+if(isset($_POST['passbtn'])){
+    header("location: adminchangepass.php");
 }
 
 ?>
@@ -88,10 +91,11 @@ if(isset($_POST['updatebtn'])){
         echo "Email: <br>
               $_SESSION[useremail]<br><br>";
         echo "Username: <input type=\"text\" name=\"username\" value=\"$_SESSION[username]\" required><br>";
-        echo "Password: <div class=\"password-container\">
-                    <input type=\"password\" id=\"password\" name=\"password\" value=\"$_SESSION[password]\" required>
-                    <i class=\"bi bi-eye-slash password-toggle\" id=\"togglePassword\"></i>
-                </div>";
+        //echo "Password: <div class=\"password-container\">
+        //            <input type=\"password\" id=\"password\" name=\"password\" value=\"$_SESSION[password]\" required>
+        //            <i class=\"bi bi-eye-slash password-toggle\" id=\"togglePassword\"></i>
+        //        </div>";
+        echo "Password: <button class='passbtn' type='submit' name='passbtn'>CHANGE PASSWORD</button><br><br>";
         echo "Age: <input type=\"text\" name=\"age\" value=\"$_SESSION[age]\" required><br><br>";
         echo "Gender: <br>
               <input type=\"radio\" id=\"male\" name=\"gender\" value=\"Male\" " . ($_SESSION['gender'] == 'Male' ? 'checked' : '') . " required><label for=\"male\">Male</label>
@@ -104,5 +108,15 @@ if(isset($_POST['updatebtn'])){
         
         </form>
     </div>
+    <script>
+        document.getElementById('togglePassword').addEventListener('click', function () {
+        var passwordField = document.getElementById('password');
+        var type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordField.setAttribute('type', type);
+        this.classList.toggle('bi-eye');
+        this.classList.toggle('bi-eye-slash');
+        });
+        
+    </script>
 </body>
 </html>

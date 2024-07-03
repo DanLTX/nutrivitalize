@@ -39,9 +39,10 @@ if(isset($_POST['addBtn'])){
     } elseif ($bmi < 18.5) {
         $suggestID = 4;
     }
-
+    $password = $_POST['password'];
+    $hash = password_hash($password,PASSWORD_DEFAULT);
     $sql="INSERT INTO user (email, username, pass_word, age, gender, height, weight) VALUES ('$_POST[email]', '$_POST[username]',
-    '$_POST[password]','$_POST[age]','$_POST[gender]','$_POST[height]','$_POST[weight]')";
+    '$hash','$_POST[age]','$_POST[gender]','$_POST[height]','$_POST[weight]')";
     $sql2="INSERT INTO bmi (email, suggestID, date, bmi_value) VALUES ('$_POST[email]','$suggestID','$currentdate','$bmi')";
     if(!mysqli_query($conn, $sql)){
     die('Error:' . mysqli_error($conn));
@@ -130,18 +131,18 @@ $conn->close();
         </tr>
         <tr>
             <form action="" method="post">
-                <td><input type="text" name="email"></td>
-                <td><input type="text" name="username"></td>
-                <td><input type="text" name="password"></td>
-                <td><input type="text" name="age"></td>
+                <td><input type="text" name="email" id="email" required></td>
+                <td><input type="text" name="username" required></td>
+                <td><input type="text" name="password" required></td>
+                <td><input type="text" name="age" id="age" required></td>
                 <td>
                 <select id="gender" name="gender">
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                 </select>
                 </td>
-                <td><input type="text" name="height"></td>
-                <td><input type="text" name="weight"></td>
+                <td><input type="text" name="height" id="height"></td>
+                <td><input type="text" name="weight" id="weight"></td>
                 <td><button name="addBtn" style="background-color: lightgreen;">Add</button></td>
             </form>
         </tr>
@@ -149,7 +150,7 @@ $conn->close();
         <tr>
             <td><?php echo $rows['email']; ?></td>
             <td><?php echo $rows['username']; ?></td>
-            <td><?php echo $rows['pass_word']; ?></td>
+            <td><?php echo "******"; ?></td>
             <td><?php echo $rows['age']; ?></td>
             <td><?php echo $rows['gender']; ?></td>
             <td><?php echo $rows['height']; ?></td>
@@ -160,5 +161,56 @@ $conn->close();
         <?php } ?>
     </table>
 </section>
+<script>
+    //validate email
+    var email = document.getElementById("email");
+
+    function validateEmail(emailField) {
+        var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        if (!emailPattern.test(emailField.value)) {
+            emailField.setCustomValidity("Please enter a valid email address.");
+        } else {
+            emailField.setCustomValidity('');
+        }
+    }
+    email.oninput = function() {
+        validateEmail(email);
+    };
+
+    var age = document.getElementById("age"),
+            weight = document.getElementById("weight"),
+            height = document.getElementById("height");
+
+        //validate age range 13-100
+        function validateAge() {
+            if (age.value < 13 || age.value > 100) {
+                age.setCustomValidity("Age must be between 13 and 100.");
+            } else {
+                age.setCustomValidity('');
+            }
+        }
+
+        //validate weight 1-650
+        function validateWeight() {
+            if (weight.value < 1 || weight.value > 650) {
+                weight.setCustomValidity("Weight must be between 1 and 650 kg.");
+            } else {
+                weight.setCustomValidity('');
+            }
+        }
+
+        //validate height 1-250
+        function validateHeight() {
+            if (height.value < 1 || height.value > 250) {
+                height.setCustomValidity("Height must be between 1 and 250 cm.");
+            } else {
+                height.setCustomValidity('');
+            }
+        }
+
+        age.oninput = validateAge;
+        weight.oninput = validateWeight;
+        height.oninput = validateHeight;
+</script>
 </body>
 </html>

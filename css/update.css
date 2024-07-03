@@ -46,6 +46,17 @@
             border-radius: 5px;
             cursor: pointer;
         }
+        .passbtn{
+            padding: 10px 20px;
+            background-color: #f54009;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .passbtn:hover{
+            background-color: rgb(224, 138, 67);
+        }
         .submitbtn:hover {
             background-color: #218838;
         }

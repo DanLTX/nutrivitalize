@@ -110,10 +110,10 @@ $conn->close();
         </tr>
         <tr>
             <form action="" method="post">
-                <td><input type="text" name="foodName"></td>
-                <td><input type="text" name="foodCalories"></td>
-                <td><input type="text" name="foodCategory"></td>
-                <td><input type="text" name="foodImage"></td>
+                <td><input type="text" name="foodName" required></td>
+                <td><input type="text" name="foodCalories" required></td>
+                <td><input type="text" name="foodCategory" required></td>
+                <td><input type="text" name="foodImage" required></td>
                 <td><button name="addBtn" style="background-color: lightgreen;">Add</button></td>
             </form>
         </tr>

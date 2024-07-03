@@ -20,9 +20,7 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] != $auth) {
 if(isset($_POST['updatebtn'])){
     $email = $_SESSION['email'];
     $username = $_POST['username'];
-    $password = $_POST['password'];
     $age = $_POST['age'];
-    $gender = $_POST['gender'];
     $height = $_POST['height'];
     $weight = $_POST['weight'];
 
@@ -30,7 +28,7 @@ if(isset($_POST['updatebtn'])){
     $sql = mysqli_query($conn,$select);
     $row = mysqli_fetch_assoc($sql);
 
-    $update = "update user set username='$username',pass_word='$password',age='$age', gender='$gender', height='$height', weight='$weight' where email like '%$email'";
+    $update = "update user set username='$username',age='$age', height='$height', weight='$weight' where email like '%$email'";
     $sql2=mysqli_query($conn,$update);
     if($sql2){
         header("location: profile.php");
@@ -53,6 +51,9 @@ if(isset($_POST['updatebtn'])){
             $_SESSION["weight"] = $row["weight"];
         }
     }
+}
+if(isset($_POST['passbtn'])){
+    header("location: changepass.php");
 }
 ?>
 <!DOCTYPE html>
@@ -96,14 +97,13 @@ if(isset($_POST['updatebtn'])){
         echo "Email: <br>
               $_SESSION[email]<br><br>";
         echo "Username: <input type=\"text\" name=\"username\" value=\"$_SESSION[username]\" required><br>";
-        echo "Password: <div class=\"password-container\">
-                    <input type=\"password\" id=\"password\" name=\"password\" value=\"$_SESSION[password]\" required>
-                    <i class=\"bi bi-eye-slash password-toggle\" id=\"togglePassword\"></i>
-                </div>";
+        //echo "Password: <div class=\"password-container\">
+        //            <input type=\"password\" id=\"password\" name=\"password\" value=\"$_SESSION[password]\" required>
+        //            <i class=\"bi bi-eye-slash password-toggle\" id=\"togglePassword\"></i>
+        //        </div>";
+        echo "Password: <button class='passbtn' type='submit' name='passbtn'>CHANGE PASSWORD</button><br><br>";
         echo "Age: <input type=\"text\" name=\"age\" id='age' value=\"$_SESSION[age]\" required><br><br>";
-        echo "Gender: <br>
-              <input type=\"radio\" id=\"male\" name=\"gender\" value=\"Male\" " . ($_SESSION['gender'] == 'Male' ? 'checked' : '') . " required><label for=\"male\">Male</label>
-              <input type=\"radio\" id=\"female\" name=\"gender\" value=\"Female\" " . ($_SESSION['gender'] == 'Female' ? 'checked' : '') . " required><label for=\"female\">Female</label><br><br>";
+        echo "Gender: $_SESSION[gender]". "<br><br>";
         echo "Height(cm): <input type=\"text\" name=\"height\" id='height' value=\"$_SESSION[height]\" required><br>";
         echo "Weight(kg): <input type=\"text\" name=\"weight\" id='weight' value=\"$_SESSION[weight]\" required><br>";
         ?>

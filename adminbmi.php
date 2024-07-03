@@ -121,7 +121,7 @@ $conn->close();
         <form method="post">
             <div class="search-container">
                 <br><br>
-                <input class="search" type="text" name="search" placeholder="Search by email or username" value="<?php echo htmlspecialchars($search); ?>">
+                <input class="search" type="text" name="search" placeholder="Search by email" value="<?php echo htmlspecialchars($search); ?>">
                 <br><br>
                 <div class="search-container2"><button class="searchbtn" type="submit">Search</button></div>
                 <br>
@@ -137,9 +137,9 @@ $conn->close();
             </tr>
             <tr>
                 <form action="" method="post">
-                    <td><input type="text" name="email"></td>
-                    <td><input type="date" name="date"></td>
-                    <td><input type="text" name="bmi_value"></td>
+                    <td><input type="text" name="email" id="email" required></td>
+                    <td><input type="date" name="date" required></td>
+                    <td><input type="text" name="bmi_value" required></td>
                     <td><button name="addBtn" style="background-color: lightgreen;">Add</button></td>
                 </form>
             </tr>
@@ -162,6 +162,21 @@ $conn->close();
             ?>
         </table>
     </section>
-</body>
+    <script>
+        //validate email
+    var email = document.getElementById("email");
 
+    function validateEmail(emailField) {
+        var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        if (!emailPattern.test(emailField.value)) {
+            emailField.setCustomValidity("Please enter a valid email address.");
+        } else {
+            emailField.setCustomValidity('');
+        }
+    }
+    email.oninput = function() {
+        validateEmail(email);
+    };
+    </script>
+</body>
 </html>

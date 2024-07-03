@@ -16,8 +16,12 @@ if(isset($_POST['submitSign'])){
         $suggestID = 4;
     }
 
+    //password hashing
+    $pass_text = $_POST['password'];
+    $hash = password_hash($pass_text,PASSWORD_DEFAULT);
+
     $sql="INSERT INTO user (email, username, pass_word, age, gender, height, weight) VALUES ('$_POST[email]', '$_POST[username]',
-    '$_POST[password]','$_POST[age]','$_POST[gender]','$_POST[height]','$_POST[weight]')";
+    '$hash','$_POST[age]','$_POST[gender]','$_POST[height]','$_POST[weight]')";
     $sql2="INSERT INTO bmi (email, suggestID, date, bmi_value) VALUES ('$_POST[email]','$suggestID','$currentdate','$bmi')";
     if(!mysqli_query($conn, $sql)){
     die('Error:' . mysqli_error($conn));
@@ -29,20 +33,21 @@ if(isset($_POST['submitSign'])){
 else if(isset($_POST['submitLog'])){
     $email = $_POST['emailLog'];  
     $password = $_POST['passwordLog'];
-    $sqlLog = "select * from user where email = '$email' and pass_word = '$password'";  
+
+    //verify hashed password
+    $sqlLog = "select * from user where email = '$email'";  
     $result = mysqli_query($conn, $sqlLog);  
-    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
-    $count = mysqli_num_rows($result);     
-    if($count == 1){  
-        
+    $row = mysqli_fetch_row($result);  
+    $hash = $row[2];
+    if(password_verify($password, $hash)){  
         header("Location: home.php");
     }  
     else{  
-        $sqlLog2 = "select * from admin where emailID = '$email' and pass_word = '$password'";  
+        $sqlLog2 = "select * from admin where emailID = '$email'";  
         $result = mysqli_query($conn, $sqlLog2);  
-        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
-        $count = mysqli_num_rows($result);
-        if($count == 1){
+        $row = mysqli_fetch_row($result);  
+        $hash = $row[1];
+        if(password_verify($password, $hash)){  
             header("Location: adminhome.php");
         }  
     }
@@ -102,7 +107,7 @@ else if(isset($_POST['submitLog'])){
                 <div class="signin-form">
                     <?php
                     if(isset($_POST['submitLog'])){
-                        if(!$count == 1){
+                        if(!password_verify($password, $hash)){
                             echo "<p class='error'><b>INCORRECT EMAIL OR PASSWORD!!!</b></p>";
                             
                         }
@@ -247,10 +252,10 @@ else if(isset($_POST['submitLog'])){
             }
         }
 
-        //validate weight 1-999
+        //validate weight 1-650
         function validateWeight() {
-            if (weight.value < 1 || weight.value > 999) {
-                weight.setCustomValidity("Weight must be between 1 and 999 kg.");
+            if (weight.value < 1 || weight.value > 650) {
+                weight.setCustomValidity("Weight must be between 1 and 650 kg.");
             } else {
                 weight.setCustomValidity('');
             }
