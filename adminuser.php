@@ -8,7 +8,7 @@ if (mysqli_num_rows($result) == 1) {
     while($row = mysqli_fetch_assoc($result)) {
         $auth = $row["emailID"];
     }
-}fdsfd
+}
 if (!isset($_SESSION['email']) || $_SESSION['email'] != $auth) {
     header('Location: login.php');
     session_destroy();
